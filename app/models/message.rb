@@ -1,3 +1,5 @@
 class Message < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :author, class_name: "User"
+  belongs_to :receiver, class_name: "User"
+  
 end

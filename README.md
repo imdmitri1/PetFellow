@@ -1,19 +1,21 @@
 # PetFellow
+`(currently in development)`
 ### Social network for pet lovers!
 
+
 > User stories:
-* user can see a homepage  with recent picture posts
-* user can register / sign in
-* registered user can:
-    * edit/delete profile
-    * create/edit/delete his own posts
-    * follow other users
-    * be followed by other users
-    * see their own profile
-    * search for users
-    * send personal messages
-    * like posts
-    * have favorite posts
+  * user can see a homepage with recent picture posts
+  * user can register / sign in
+  * registered user can:
+      * edit/delete profile
+      * create/edit/delete their own posts
+      * follow other users
+      * be followed by other users
+      * see their own profile
+      * search for users
+      * send personal messages
+      * like posts
+      * have favorite posts
 
 Stretch: adding tags
 

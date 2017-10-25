@@ -4,7 +4,7 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.new(params[:user]) # name, email, password
+  @user = User.new(params[:user]) # name, username, email, password
   if @user.save
     session[:user_id] = @user.id
     redirect '/index'

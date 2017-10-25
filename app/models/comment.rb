@@ -1,3 +1,5 @@
 class Comment < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :author, class_name: "User"
+  belongs_to :post
+  has_many  :likes, as: :likable
 end
