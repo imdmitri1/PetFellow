@@ -1,0 +1,16 @@
+<div class="authentication">
+
+  <h3>Please log in</h3>
+
+  <%= erb :'partials/_errors', layout: false, locals: {errors: @errors}%>
+
+  <form action="/sessions" method="Post">
+    <label for="email">Email</label>
+    <input type="text" placeholder="email" name="email" >
+    <label for="password">Password</label>
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="login">
+  </form>
+
+  <a href="/users/new">or register</a>
+</div>

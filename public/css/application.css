@@ -1,0 +1,26 @@
+.authentication {
+  max-width: 300px;
+  /*position: relative;*/
+  margin: 0 auto;
+  margin-top: 25%;
+  vertical-align: center;
+  list-style: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+.authentication label {
+  display: none;
+}
+
+.authentication * {
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+
+}
+
+.errors {
+  margin-left: -31px;
+  /*text-align: center;*/
+  color: red;
+}
