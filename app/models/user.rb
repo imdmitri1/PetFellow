@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
-  validates_presence_of :name, :email, :hashed_password
-  validates_uniqueness_of :email
+  has_many :posts, foreign_key: :author_id
+  has_many :favorite_posts
+  has_many :comments, foreign_key: :author_id
+  has_many :likes, foreign_key: :author_id
+  has_many :messages, foreign_key: :author_id
+  has_many :followers
+  has_many :followings
+
+  validates_presence_of :name, :username, :email, :hashed_password
+  validates_uniqueness_of :email, :username
 
   def password
     @password ||= BCrypt::Password.new(hashed_password)

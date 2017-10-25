@@ -1,3 +1,5 @@
 class Post < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :author, class_name: "User"
+  has_many :favorite_posts
+  has_many :likes, as: :likable 
 end
