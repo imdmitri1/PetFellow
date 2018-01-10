@@ -13,3 +13,8 @@ post '/users' do
     erb :'users/new', layout: :authentication_layout
   end
 end
+
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :'users/show'
+end
