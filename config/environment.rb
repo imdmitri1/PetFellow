@@ -17,6 +17,9 @@ require 'logger'
 
 require 'bcrypt'
 require 'faker'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 
 require 'sinatra'
 require "sinatra/reloader" if development?
