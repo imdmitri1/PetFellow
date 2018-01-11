@@ -1,3 +1,17 @@
 <h3>user profile page</h3>
 
 <div class=""><%= @user.name%> </div>
+<div class=""><img src="<%= @user.avatar%>" alt="<%= @user.avatar%>"> </div>
+<div class=""><%= @user.username%> </div>
+<div class=""><%= @user.bio%> </div>
+
+<div>
+  <ul>
+      <% @user.posts.each do |post| %>
+        <li> <img src="<%=post.pic_link %> " alt="<%= post.pic_link %>"> <br> <%= post.description %>  </li>
+      <% end %>
+  </ul>
+</div>
+
+<a href="/users/<%=@user.id%>/edit">Edit</a>
+<a href="/">Main</a>

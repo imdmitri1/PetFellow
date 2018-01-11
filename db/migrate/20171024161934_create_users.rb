@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text   :bio, limit: 512
       t.string :email, uniq: true, null: false, limit: 64
       t.string :hashed_password, null: false
-      t.string  :avatar
+      t.string :avatar
 
       t.timestamps
     end

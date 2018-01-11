@@ -1,11 +1,8 @@
 get '/' do
-  redirect '/index'
+  erb :index
 end
 
-get '/index' do
-#  if current_user
-    erb :index
-#  else
-#    redirect '/sessions/new'
-#  end
-end
+# where to put this???
+# get '/*' do
+#   redirect '/'
+# end

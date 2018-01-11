@@ -7,7 +7,7 @@ Message.delete_all
 Follower.delete_all
 Following.delete_all
 
-User.create!(name: "Tom", username: "tomtom", email: "tom@mail.com", password: "password")
+User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "tom@mail.com", password: "password")
 
 10.times do
   namee = Faker::Internet.user_name

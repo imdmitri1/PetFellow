@@ -1,0 +1,25 @@
+
+<div class="">
+
+  <h3> Edit your profile:</h3>
+
+  <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
+
+  <form action="/users/<%=@user.id%>" method="Post">
+    <input type="hidden" name="_method" value="Put">
+    <label for="name">Name</label>
+    <input type="text" placeholder="name" name="user[name]" value="<%=@user.name%>">
+    <label for="username">Avatar</label>
+    <input type="text" placeholder="avatar" name="user[avatar]" value="<%=@user.avatar%>">
+    <label for="username">Username</label>
+    <input type="text" placeholder="username" name="user[username]" value="<%=@user.username%>">
+    <label for="username">Bio</label>
+    <input type="text" placeholder="bio" name="user[bio]" value="<%=@user.bio%>">
+    <label for="email">Email</label>
+    <input type="text" placeholder="email" name="user[email]" value="<%=@user.email%>">
+    <label for="password">Password</label>
+    <input type="password" placeholder="password" name="user[password]">
+    <input type="submit" value="save">
+  </form>
+
+</div>
