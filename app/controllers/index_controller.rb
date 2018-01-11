@@ -7,7 +7,8 @@ get '/' do
     all_posts = Post.all.select { |post| post.like_count > average_like }
     # all_posts = Post.popular
   end
-  @posts = all_posts
+  @posts = all_posts.paginate(:page => params[:page], :per_page => 32)
+
   erb :index
 end
 
@@ -15,3 +16,4 @@ end
 # get '/*' do
 #   redirect '/'
 # end
+# require "will_paginate"

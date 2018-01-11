@@ -34,7 +34,6 @@ GEM
       i18n (>= 0.7)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
-    image_suckr (0.2.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.1)
@@ -95,7 +94,6 @@ DEPENDENCIES
   capybara
   factory_girl
   faker
-  image_suckr
   pg (~> 0.20)
   rack-test
   rake
@@ -104,7 +102,7 @@ DEPENDENCIES
   shoulda-matchers
   sinatra (~> 1.0)
   sinatra-contrib
-  will_paginate (~> 3.1.6)
+  will_paginate
 
 BUNDLED WITH
    1.15.4
