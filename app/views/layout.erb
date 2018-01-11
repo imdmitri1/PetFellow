@@ -22,7 +22,8 @@
   <nav>
     <ul class="nav">
       <%if logged_in?%>
-      <li><a href="/users/<%= current_user.id %>"><%= current_user.name %> </a></li>
+      <li><%= current_user.name.capitalize %> </li>
+      <li><a href="/users/<%= current_user.id %>">Profile </a></li>
       <li>
         <form method="post" action="/sessions">
           <input type="hidden" name="_method" value="DELETE" />
@@ -35,7 +36,12 @@
       <% end %>
     </ul>
   </nav>
-  
+
+  <form action="#">
+    <input type="text" name="search" placeholder="posts,users">
+    <input type="button" value="search"></input>
+  </form>
+
   <%= yield %>
 </body>
 </html>
