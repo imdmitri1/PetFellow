@@ -11,12 +11,12 @@ helpers do
     redirect '/session/new' unless logged_in?
   end
 
-  def authorized_user(entry)
-    entry.user_id == session[:user_id]
+  def author?(entry)
+    entry.autor_id == session[:user_id]
   end
 
 #need to check this method!
-  def authorized?
-    session[:user_id] == params[:id].to_i
-  end
+  # def authorized?
+  #   session[:user_id] == params[:id].to_i
+  # end
 end

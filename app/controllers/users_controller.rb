@@ -15,6 +15,7 @@ post '/users' do
     redirect '/index'
   else
     status 422
+    @errors = @user.errors.full_messages
     erb :'users/new', layout: :authentication_layout
   end
 end
