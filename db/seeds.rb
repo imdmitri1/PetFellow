@@ -1,11 +1,10 @@
-User.delete_all
-Post.delete_all
-FavoritePost.delete_all
-Comment.delete_all
-Like.delete_all
-Message.delete_all
-Follower.delete_all
-Following.delete_all
+# User.delete_all
+# Post.delete_all
+# FavoritePost.delete_all
+# Comment.delete_all
+# Like.delete_all
+# Message.delete_all
+# Follow.delete_all
 
 User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "tom@mail.com", password: "password")
 
@@ -16,7 +15,7 @@ end
 
 100.times do |n|
   Post.create!(description: Faker::Hacker.say_something_smart, pic_link: "https://unsplash.it/500?image=" + (n+5).to_s, author_id: rand(1..11))
-  sleep(1)
+  # sleep(1)
 end
 
 20.times do
@@ -41,9 +40,9 @@ end
 end
 
 5.times do
-  Follower.create!(user_id: rand(1..10), follower_id: rand(1..10))
+  Follow.create!(user_id: rand(1..10), follower_id: rand(1..10))
 end
 
 5.times do
-  Following.create!(user_id: rand(1..10), following_id: rand(1..10))
+  Follow.create!(user_id: rand(1..10), following_id: rand(1..10))
 end

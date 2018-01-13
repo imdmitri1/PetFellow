@@ -3,9 +3,10 @@
 
  <% if @user.followers.any? %>
    <ul>
-     <% @user.subscribers.each do |subscriber| %>
+     <% @user.followers.each do |follower| %>
        <li>
-          <div><%= subscriber.username %></div>
+          <div><img src="<%= follower.avatar %>" alt=""> </div>
+          <div><%= follower.username %><%= follower.name %></div>
         </li>
      <% end %>
      </ul>

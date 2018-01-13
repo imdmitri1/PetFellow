@@ -1,0 +1,15 @@
+
+ <!-- user header partial -->
+
+ <% if @user.followings.any? %>
+   <ul>
+     <% @user.followings.each do |following| %>
+       <li>
+          <div><img src="<%= following.avatar %>" alt=""> </div>
+          <div><%= following.username %><%= following.name %></div>
+        </li>
+     <% end %>
+     </ul>
+ <% else %>
+   <p>You don't have followings yet</p>
+ <% end %>
