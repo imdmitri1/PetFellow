@@ -12,7 +12,7 @@ post '/users' do
   @user = User.new(params[:user]) # name, username, email, password
   if @user.save
     session[:user_id] = @user.id
-    redirect '/index'
+    redirect '/'
   else
     status 422
     @errors = @user.errors.full_messages
@@ -26,46 +26,24 @@ get '/users/:id' do
 end
 
 get '/users/:id/edit' do
-  @user = User.find(params[:id])
-  erb :'users/edit'
-end
-
-put '/users/:id' do
-  @user = User.find(params[:id])
-  @user.update_attributes(params[:user])
-  if @user.save
-    redirect "/users/#{@user.id}"
-  else
-    status 422
-    @errors = @user.errors.full_messages
+  if author?(params[:id])
+    @user = User.find(params[:id])
     erb :'users/edit'
   end
 end
 
+put '/users/:id' do
+  @user = User.find(params[:id])
+  if author?(@user.id)
+    @user.update_attributes(params[:user])
+    if @user.save
+      redirect "/users/#{@user.id}"
+    else
+      status 422
+      @errors = @user.errors.full_messages
+      erb :'users/edit'
+    end
+  end
+end
+
 # delete account?
-
-get '/users/:id/followers' do
-  @user = User.find(params[:id])
-  erb :'users/followers'
-end
-
-get '/users/:id/followings' do
-  @user = User.find(params[:id])
-  erb :'users/followings'
-end
-
-post '/users/:id/follow' do
-  authenticate!
-  Follow.find_or_create_by(user_id: params[:id], follower_id: current_user.id)
-  Follow.find_or_create_by(user_id: current_user.id, following_id: params[:id])
-  redirect back
-end
-
-delete '/users/:id/unfollow' do
-  authenticate!
-  his_list = Follow.find_by(user_id: params[:id], follower_id: current_user.id)
-  your_list = Follow.find_by(user_id: current_user.id, following_id: params[:id])
-  his_list.destroy
-  your_list.destroy
-  redirect back
-end
