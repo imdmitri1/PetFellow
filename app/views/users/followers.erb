@@ -1,0 +1,14 @@
+
+ <!-- user header partial -->
+
+ <% if @user.followers.any? %>
+   <ul>
+     <% @user.subscribers.each do |subscriber| %>
+       <li>
+          <div><%= subscriber.username %></div>
+        </li>
+     <% end %>
+     </ul>
+ <% else %>
+   <p>You don't have followers yet</p>
+ <% end %>

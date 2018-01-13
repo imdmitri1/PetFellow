@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :likes, foreign_key: :author_id
   has_many :messages, foreign_key: :author_id
   has_many :followers
+  has_many :subscribers, through: :followers, source: :user
   has_many :followings
 
   validates_presence_of :name, :username, :email, :hashed_password

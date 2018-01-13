@@ -40,3 +40,10 @@ put '/users/:id' do
     erb :'users/edit'
   end
 end
+
+# delete account?
+
+get '/users/:id/followers' do
+  @user = User.find(params[:id])
+  erb :'users/followers'
+end
