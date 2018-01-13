@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 get '/' do
   if params.empty?
     all_posts = Post.all.order('created_at': :desc)

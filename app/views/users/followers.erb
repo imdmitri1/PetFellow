@@ -5,8 +5,10 @@
    <ul>
      <% @user.followers.each do |follower| %>
        <li>
-          <div><img src="<%= follower.avatar %>" alt=""> </div>
-          <div><%= follower.username %><%= follower.name %></div>
+         <a href="/users/<%=follower.id%>">
+           <div><img src="<%= follower.avatar %>" alt=""> </div>
+           <div><%= follower.username %><%= follower.name %></div>
+         </a>
         </li>
      <% end %>
      </ul>

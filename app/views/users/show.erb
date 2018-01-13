@@ -11,6 +11,15 @@
 <a href="/users/<%=@user.id%>/edit">Edit profile</a>
 <a href="/">Main</a>
 
+<form action="/users/<%=@user.id%>/follow" method="Post">
+  <input type="submit" value="follow">
+</form>
+
+</form><form action="/users/<%=@user.id%>/unfollow" method="Post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="unfollow">
+</form>
+
 <div>
   <ul>
       <% @user.posts.reverse.each do |post| %>
