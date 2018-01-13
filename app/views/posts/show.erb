@@ -18,6 +18,9 @@
         <%= comment.content %>
         <br>
         <%= comment.author.username %>
+        <!-- if author -->
+        <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
+
       </li>
     <% end %>
   </ul>
@@ -25,4 +28,4 @@
   <h3>No comments yet</h3>
 <% end %>
 
-<!-- <a href="">add a comment</a> -->
+<a href="/posts/<%=@post.id%>/comments/new">add a comment</a>

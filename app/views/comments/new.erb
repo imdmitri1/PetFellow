@@ -1,0 +1,9 @@
+<h3>create new comment:</h3>
+
+# <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
+
+<form action="/posts/<%=@post.id%>/comments" method="Post">
+  <label for="comment">Comment</label>
+  <textarea name="comment" placeholder="your comment here..." rows="8" cols="80"><%=@comment.content%></textarea>
+  <input type="submit" value="add comment">
+</form>
