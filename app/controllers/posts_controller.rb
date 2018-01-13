@@ -6,7 +6,7 @@ end
 
 post '/posts' do
   authenticate!
-  @post = Post.new(pic_link: params[:pic_link], description: params[:description], author_id: current_user.id) # ???
+  @post = Post.new(pic_link: params[:pic_link], description: params[:description], author_id: current_user.id) 
   if @post.save
     redirect "/users/#{current_user.id}"
   else

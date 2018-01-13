@@ -3,12 +3,12 @@
 
   <h3>Please register</h3>
 
-  <%= erb :'partials/_errors', layout: false, locals: {errors: @user.errors.full_messages} %>
+  <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
   <form action="/users" method="Post">
     <label for="name">Name</label>
     <input type="text" placeholder="name" name="user[name]" value="<%=@user.name%>">
-    <label for="username">Name</label>
+    <label for="username">Username</label>
     <input type="text" placeholder="username" name="user[username]" value="<%=@user.username%>">
     <label for="email">Email</label>
     <input type="text" placeholder="email" name="user[email]" value="<%=@user.email%>">

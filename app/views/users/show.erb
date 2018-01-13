@@ -5,15 +5,16 @@
 <div class=""><%= @user.username%> </div>
 <div class=""><%= @user.bio%> </div>
 
+<a href="/posts/new">new post</a>
+<a href="/users/<%=@user.id%>/followers">followers</a>
+<a href="/users/<%=@user.id%>/followings">following</a>
+<a href="/users/<%=@user.id%>/edit">Edit profile</a>
+<a href="/">Main</a>
+
 <div>
   <ul>
-      <% @user.posts.each do |post| %>
-        <li> <img src="<%=post.pic_link %> " alt="<%= post.pic_link %>"> <br> <%= post.description %>  </li>
+      <% @user.posts.reverse.each do |post| %>
+        <li> <a href="/posts/<%=post.id%>"><img src="<%=post.pic_link %> " alt="<%= post.pic_link %>"> <br> <%= post.description %> </a> </li>
       <% end %>
   </ul>
 </div>
-
-<a href="/users/<%=@user.id%>/followers">followers</a>
-<a href="/users/<%=@user.id%>/followings">following</a>
-<a href="/users/<%=@user.id%>/edit">Edit</a>
-<a href="/">Main</a>

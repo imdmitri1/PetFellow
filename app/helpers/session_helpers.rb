@@ -12,7 +12,7 @@ helpers do
   end
 
   def author?(entry)
-    entry.autor_id == session[:user_id]
+    entry.author_id == session[:user_id]
   end
 
 #need to check this method!

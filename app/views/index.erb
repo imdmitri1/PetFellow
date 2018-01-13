@@ -5,8 +5,10 @@
 <div>
   <% @posts.each do |post| %>
   <div>
-    <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
-    <div><%=post.description%> <%=post.created_at%> </div>
+    <a href="/posts/<%=post.id%>">
+      <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
+      <div><%=post.description%> <br> <%=post.created_at%> </div>
+    </a>
   </div>
   <% end %>
 </div>

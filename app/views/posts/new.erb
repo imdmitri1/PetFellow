@@ -1,0 +1,11 @@
+<h3>new post</h3>
+
+<%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
+
+<form action="/posts" method="Post">
+  <label for="pic_link">link</label>
+  <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>">
+  <label for="description">description</label>
+  <input type="text" placeholder="description" name="description" value="<%=@post.description%>">
+  <input type="submit" value="post">
+</form>

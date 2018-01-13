@@ -1,0 +1,12 @@
+<h3>edit post</h3>
+
+<%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
+
+<form action="/posts/<%=@post.id%>" method="Post">
+  <input type="hidden" name="_method" value="Put">
+  <label for="pic_link">link</label>
+  <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>">
+  <label for="description">description</label>
+  <input type="text" placeholder="description" name="description" value="<%=@post.description%>">
+  <input type="submit" value="save">
+</form>
