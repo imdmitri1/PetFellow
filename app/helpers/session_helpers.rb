@@ -15,6 +15,14 @@ helpers do
     entry.author_id == session[:user_id]
   end
 
+  def your_page?
+    current_user.id == @user.id
+  end
+
+  def following?
+    current_user.followings.include?(User.find_by(id: @user.id))
+  end
+
 #need to check this method!
   # def authorized?
   #   session[:user_id] == params[:id].to_i

@@ -5,20 +5,27 @@
 <div class=""><%= @user.username%> </div>
 <div class=""><%= @user.bio%> </div>
 
-<a href="/posts/new">new post</a>
+<% if your_page? %>
+  <a href="/posts/new">new post</a>
+  <a href="/users/<%=@user.id%>/edit">Edit profile</a>
+<% end %>
+
 <a href="/users/<%=@user.id%>/followers">followers</a>
 <a href="/users/<%=@user.id%>/followings">following</a>
-<a href="/users/<%=@user.id%>/edit">Edit profile</a>
-<a href="/">Main</a>
 
-<form action="/users/<%=@user.id%>/follow" method="Post">
-  <input type="submit" value="follow">
-</form>
+<% if !(your_page?) %>
 
-</form><form action="/users/<%=@user.id%>/unfollow" method="Post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="unfollow">
-</form>
+  <% if following? %>
+    </form><form action="/users/<%=@user.id%>/unfollow" method="Post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="unfollow">
+    </form>
+  <% else %>
+    <form action="/users/<%=@user.id%>/follow" method="Post">
+      <input type="submit" value="follow">
+    </form>
+  <% end %>
+<% end %>
 
 <div>
   <ul>
