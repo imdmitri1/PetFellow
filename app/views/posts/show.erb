@@ -2,7 +2,7 @@
 <div class=""><img src="<%= @post.pic_link%>" alt="<%= @post.pic_link%>"> </div>
 <div class=""><%= @post.description%> </div>
 
-<% if author?(@post) %>
+<% if author?(@post.author_id) %>
   <a href="/posts/<%=@post.id%>/edit">Edit post</a>
   <form action="/posts/<%=@post.id%>" method="Post">
     <input type="hidden" name="_method" value="delete">
@@ -18,8 +18,13 @@
         <%= comment.content %>
         <br>
         <%= comment.author.username %>
-        <!-- if author -->
-        <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
+        <% if author?(comment.author_id) %>
+          <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
+          <form action="/posts/<%=@post.id%>/comments/<%=comment.id%>" method="Post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete comment">
+          </form>
+        <% end %>
 
       </li>
     <% end %>

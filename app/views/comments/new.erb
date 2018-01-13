@@ -1,6 +1,6 @@
 <h3>create new comment:</h3>
 
-# <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
+<%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
 <form action="/posts/<%=@post.id%>/comments" method="Post">
   <label for="comment">Comment</label>

@@ -30,7 +30,7 @@ end
 put '/posts/:id' do
   authenticate!
   @post = Post.find_by(id: params[:id])
-  if author?(@post)
+  if author?(@post.author_id)
     @post.update_attributes(pic_link: params[:pic_link], description: params[:description])
     if @post.save
       redirect "/users/#{current_user.id}"
@@ -48,7 +48,7 @@ end
 delete '/posts/:id' do
   authenticate!
   @post = Post.find_by(id: params[:id])
-  if author?(@post)
+  if author?(@post.author_id)
     @post.destroy
     redirect "/users/#{current_user.id}"
   else
@@ -84,12 +84,26 @@ end
 put '/posts/:id/comments/:comment_id' do
   @post = Post.find_by(id: params[:id])
   @comment = Comment.find_by(id: params[:comment_id])
-  @comment.update_attributes(content: params[:comment])
-  if @comment.save
+  if author?(@comment.author_id)
+    @comment.update_attributes(content: params[:comment])
+    if @comment.save
+      redirect "/posts/#{params[:id]}"
+    else
+      status 422
+      @errors = @comments.errors.full_messages
+      erb :'commets/edit'
+    end
+  else
+    redirect "/posts/#{params[:id]}"
+  end
+end
+
+delete '/posts/:id/comments/:comment_id' do
+  @comment = Comment.find_by(id: params[:comment_id])
+  if author?(@comment.author_id)
+    @comment.destroy
     redirect "/posts/#{params[:id]}"
   else
-    status 422
-    @errors = @comments.errors.full_messages
-    erb :'commets/edit'
+    redirect "/posts/#{params[:id]}"
   end
 end

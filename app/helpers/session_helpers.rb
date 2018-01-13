@@ -11,8 +11,8 @@ helpers do
     redirect '/session/new' unless logged_in?
   end
 
-  def author?(entry)
-    entry.author_id == session[:user_id]
+  def author?(author_id)
+    author_id == session[:user_id]
   end
 
   def your_page?
@@ -23,7 +23,7 @@ helpers do
     current_user.followings.include?(User.find_by(id: @user.id))
   end
 
-#need to check this method!
+  #need to check this method!
   # def authorized?
   #   session[:user_id] == params[:id].to_i
   # end

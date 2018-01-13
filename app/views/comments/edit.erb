@@ -1,6 +1,6 @@
 <h3>edit comment:</h3>
 
-# <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
+<%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
 <form action="/posts/<%=@post.id%>/comments/<%=@comment.id%>" method="Post">
   <input type="hidden" name="_method" value="put">
