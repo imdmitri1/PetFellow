@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   has_many :favorite_posts
   has_many :likes, as: :likable
+  has_many :comments
 
   # need to fix it
   # scope :popular, lambda {
