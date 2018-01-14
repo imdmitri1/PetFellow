@@ -39,10 +39,9 @@ end
   Message.create!(content: ["Hey", "Hi", "Hello"].sample + Faker::Hacker.say_something_smart, author_id: rand(1..10), receiver_id: rand(1..10))
 end
 
-5.times do
-  Follow.create!(user_id: rand(1..10), follower_id: rand(1..10))
-end
-
-5.times do
-  Follow.create!(user_id: rand(1..10), following_id: rand(1..10))
+10.times do
+  rand1 = rand(1..10)
+  rand2 = rand(1..10)
+  Follow.create!(user_id: rand1, follower_id: rand2)
+  Follow.create!(user_id: rand2, following_id: rand1)
 end
