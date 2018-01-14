@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name, :username, :email, :hashed_password
   validates_uniqueness_of :email, :username
+  validates :bio, length: { maximum: 512 }
+  validates :username, length: { maximum: 32 }
+  validates :email, length: { maximum: 64 }
+  #  validate :password_length
+
 
   def password
     @password ||= BCrypt::Password.new(hashed_password)
@@ -25,7 +30,6 @@ class User < ActiveRecord::Base
     self.password == password
   end
 
-  #  validate :password_length
   #  def password_length
   #    errors.add(:password, "must be at least six characters") unless @raw_password.length >= 6
   #  end
