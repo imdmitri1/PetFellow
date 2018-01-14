@@ -54,6 +54,7 @@ delete '/posts/:id' do
   @post = Post.find_by(id: params[:id])
   if author?(@post.author_id)
     @post.destroy
+    # delete comments & likes???
     redirect "/users/#{current_user.id}"
   else
     @errors = ["It's not your post!"]

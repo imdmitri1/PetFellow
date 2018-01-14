@@ -48,6 +48,7 @@ delete '/posts/:id/comments/:comment_id' do
   @comment = Comment.find_by(id: params[:comment_id])
   if author?(@comment.author_id)
     @comment.destroy
+    # delete likes???
     redirect "/posts/#{params[:id]}"
   else
     @errors = ["It's not your comment!"]
