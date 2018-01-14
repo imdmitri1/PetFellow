@@ -17,11 +17,13 @@ post '/posts' do
 end
 
 get '/posts/:id' do
+  authenticate!
   @post = Post.find_by(id: params[:id])
   erb :'posts/show'
 end
 
 get '/posts/:id/edit' do
+  authenticate!
   @post = Post.find_by(id: params[:id])
   if author?(@post.author_id)
     erb :'posts/edit'
@@ -31,6 +33,7 @@ get '/posts/:id/edit' do
 end
 
 put '/posts/:id' do
+  authenticate!
   @post = Post.find_by(id: params[:id])
   if author?(@post.author_id)
     @post.update_attributes(pic_link: params[:pic_link], description: params[:description])

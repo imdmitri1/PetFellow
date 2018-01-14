@@ -21,6 +21,7 @@ post '/users' do
 end
 
 get '/users/:id' do
+  authenticate!
   @user = User.find_by(id: params[:id])
   erb :'users/show'
 end
