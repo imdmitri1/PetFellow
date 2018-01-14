@@ -18,4 +18,14 @@ class Post < ActiveRecord::Base
   def like_count
     self.likes.count
   end
+
+
+  def self.search(word)
+    found = Post.all.select do |post|
+              post.description.downcase.include?(word.downcase)
+            end
+    return nil if word == "" || found == []
+    found # .order('created_at': :desc)
+  end
+
 end

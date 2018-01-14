@@ -33,4 +33,16 @@ class User < ActiveRecord::Base
   #  def password_length
   #    errors.add(:password, "must be at least six characters") unless @raw_password.length >= 6
   #  end
+
+  def self.search(word)
+    word = word.downcase
+    found = User.all.select do |user|
+              user.name.downcase.include?(word) ||
+              user.username.downcase.include?(word) ||
+              user.bio.downcase.include?(word)
+            end
+    return nil if word == "" || found == []
+    found # .order('created_at': :desc)
+  end
+
 end
