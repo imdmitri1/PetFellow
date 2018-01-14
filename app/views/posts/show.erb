@@ -2,6 +2,7 @@
 
 <div class=""><img src="<%= @post.pic_link%>" alt="<%= @post.pic_link%>"> </div>
 <div class=""><%= @post.description%> </div>
+<div class=""><%= @post.author.username%> </div>
 
 <% if author?(@post.author_id) %>
   <a href="/posts/<%=@post.id%>/edit">Edit post</a>

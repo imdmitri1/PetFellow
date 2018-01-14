@@ -21,19 +21,21 @@ post '/users' do
 end
 
 get '/users/:id' do
-  @user = User.find(params[:id])
+  @user = User.find_by(id: params[:id])
   erb :'users/show'
 end
 
 get '/users/:id/edit' do
+  @user = User.find_by(id: params[:id])
   if author?(params[:id])
-    @user = User.find(params[:id])
     erb :'users/edit'
+  else
+    redirect "/users/#{@user.id}"
   end
 end
 
 put '/users/:id' do
-  @user = User.find(params[:id])
+  @user = User.find_by(id: params[:id])
   if author?(@user.id)
     @user.update_attributes(params[:user])
     if @user.save
@@ -46,4 +48,24 @@ put '/users/:id' do
   end
 end
 
-# delete account?
+delete '/users/:id' do
+  user = User.find_by(id: params[:id])
+  if author?(user.id)
+    posts = Post.where(author_id: user.id)
+    favorite_posts = FavoritePost.where(user_id: user.id)
+    user_comments = Comment.where(author_id: user.id)
+    # comments_on_user_posts = Comment.where()
+    user_likes = Like.where(author_id: user.id)
+    # likes_on_user_posts = Like.where()
+    # likes_on_user_comments = Like.where()
+    follows = Follow.where(user_id: user.id)
+    # followings = Follows.where()
+    # followers = Follows.where()
+    # messages??
+    user.destroy
+    [posts,favorite_posts,user_comments,user_likes,follows].each { |item| item.map(&:destroy) if item }
+    redirect '/'
+  else
+    redirect "/users/#{@user.id}"
+  end
+end

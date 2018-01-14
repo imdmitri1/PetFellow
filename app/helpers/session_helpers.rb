@@ -12,7 +12,7 @@ helpers do
   end
 
   def author?(author_id)
-    author_id == session[:user_id]
+    author_id.to_i == session[:user_id]
   end
 
   def your_page?

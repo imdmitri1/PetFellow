@@ -1,10 +1,10 @@
 get '/users/:id/followers' do
-  @user = User.find_by(params[:id])
+  @user = User.find_by(id: params[:id])
   erb :'users/followers'
 end
 
 get '/users/:id/followings' do
-  @user = User.find_by(params[:id])
+  @user = User.find_by(id: params[:id])
   erb :'users/followings'
 end
 
