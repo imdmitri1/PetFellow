@@ -31,6 +31,16 @@
         <%= comment.content %>
         <br>
         <%= comment.author.username %>
+        <div class="">
+          <form action="/like/Comment/<%=comment.id%>" method="post">
+            <input type="submit" value="like!">
+          </form>
+          <div>
+            <% if comment.likes.total_count && comment.likes.total_count > 0 %>
+              <span class=""><%= comment.likes.total_count %></span>
+            <% end %>
+          </div>
+        </div>
         <% if author?(comment.author_id) %>
           <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
           <form action="/posts/<%=@post.id%>/comments/<%=comment.id%>" method="Post">
