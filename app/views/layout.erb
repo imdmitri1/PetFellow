@@ -22,8 +22,10 @@
 
   <nav>
     <ul class="nav">
+      <li><a href="/users"> all users </a></li>
       <%if logged_in?%>
       <li><%= current_user.name.capitalize %> </li>
+      <li><a href="/favorite">favorite posts</a> </li>
       <li><a href="/users/<%= current_user.id %>">Profile </a></li>
       <li>
         <form method="post" action="/sessions">
@@ -38,8 +40,8 @@
     </ul>
   </nav>
 
-  <form action="#">
-    <input type="text" name="search" placeholder="posts,users">
+  <form action="/search" method="get">
+    <input type="text" name="request" placeholder="search">
     <input type="button" value="search"></input>
   </form>
 
