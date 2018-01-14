@@ -27,11 +27,11 @@ end
 end
 
 100.times do
-  Like.create!(count: rand(1..50), likable_type: "Post", likable_id: rand(1..100), author_id: rand(1..10))
+  Like.create!(count: 1, likable_type: "Post", likable_id: rand(1..100), author_id: rand(1..10))
 end
 
 100.times do
-  Like.create!(count: rand(1..50), likable_type: "Comment", likable_id: rand(1..100), author_id: rand(1..10))
+  Like.create!(count: 1, likable_type: "Comment", likable_id: rand(1..100), author_id: rand(1..10))
 end
 
 

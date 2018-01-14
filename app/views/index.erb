@@ -7,8 +7,18 @@
   <div>
     <a href="/posts/<%=post.id%>">
       <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
-      <div><%=post.description%> <br> <%=post.created_at%> </div>
+      <div><%=post.description%> <br> posted on <%=Date.strptime("#{post.created_at}")  %> </div>
     </a>
+      <div class="">
+        <form action="/like/Post/<%=post.id%>" method="post">
+          <input type="submit" value="like!">
+        </form>
+        <div>
+          <% if post.likes.total_count && post.likes.total_count > 0 %>
+            <span class=""><%= post.likes.total_count %></span>
+          <% end %>
+        </div>
+      </div>
   </div>
   <% end %>
 </div>
