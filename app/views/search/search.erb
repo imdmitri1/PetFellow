@@ -1,0 +1,56 @@
+
+<div>
+  <% if @user_results %>
+    <!-- <p><%= @user_results.count %> users found</p> -->
+
+    <div>
+      <ul>
+          <% @user_results.each do |user| %>
+            <li> <a href="/users/<%=user.id%>">  <%= user.email %> <img src="<%= user.avatar %>" alt="<%= user.avatar %>"> </li> </a>
+          <% end %>
+      </ul>
+    </div>
+
+    <div class="pagination">
+      <%= will_paginate @user_results %>
+    </div>
+  <% else %>
+    <p>no users found...</p>
+  <% end %>
+
+  <% if @post_results %>
+    <!-- <p><%= @post_results.count %> posts found</p> -->
+    <% @post_results.each do |post| %>
+      <div>
+        <a href="/posts/<%=post.id%>">
+          <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
+          <div><%=post.description%> <br> posted on <%=Date.strptime("#{post.created_at}")  %> </div>
+        </a>
+
+        <div class="">
+          <form action="/like/Post/<%=post.id%>" method="post">
+            <input type="submit" value="like!">
+          </form>
+          <div>
+            <% if post.likes.total_count && post.likes.total_count > 0 %>
+              <span class=""><%= post.likes.total_count %></span>
+            <% end %>
+          </div>
+        </div>
+
+        <form action="/favorite" method="Post">
+          <input type="hidden" name="post_id" value="<%=post.id%>">
+          <input type="submit" value="fav">
+        </form>
+
+      </div>
+    <% end %>
+
+      <div class="pagination">
+        <%= will_paginate @post_results %>
+      </div>
+
+    <% else %>
+      <p>no posts found...</p>
+  <% end %>
+</div>

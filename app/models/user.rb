@@ -36,13 +36,13 @@ class User < ActiveRecord::Base
 
   def self.search(word)
     word = word.downcase
-    found = User.all.select do |user|
+    found = User.all.order('created_at': :desc).select do |user|
               user.name.downcase.include?(word) ||
               user.username.downcase.include?(word) ||
               user.bio.downcase.include?(word)
             end
     return nil if word == "" || found == []
-    found # .order('created_at': :desc)
+    found
   end
 
 end
