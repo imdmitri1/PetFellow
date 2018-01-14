@@ -1,0 +1,20 @@
+<div>
+  <% @favorites.each do |fav| %>
+  <div>
+    <a href="/posts/<%=fav.post.id%>">
+      <img src="<%=fav.post.pic_link%> " alt="<%=fav.post.pic_link%> ">
+      <div><%=fav.post.description%> <br> posted on <%=Date.strptime("#{fav.post.created_at}")  %> </div>
+    </a>
+      <div class="">
+        <form action="/like/Post/<%=fav.post.id%>" method="post">
+          <input type="submit" value="like!">
+        </form>
+        <div>
+          <% if fav.post.likes.total_count && fav.post.likes.total_count > 0 %>
+            <span class=""><%= fav.post.likes.total_count %></span>
+          <% end %>
+        </div>
+      </div>
+  </div>
+  <% end %>
+</div>
