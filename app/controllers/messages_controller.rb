@@ -1,5 +1,5 @@
 get '/messages' do
-  @conversations = Message.where(author_id: currtent_user.id) # ?????
+  @conversations = Message.where(author_id: current_user.id) 
   erb :'messages/index'
 end
 
@@ -9,7 +9,7 @@ end
 
 post '/messages' do
   authenticate!
-  @message = Message.new(content: params[:content], author_id: currtent_user.id, receiver_id: params[:id])
+  @message = Message.new(content: params[:content], author_id: current_user.id, receiver_id: params[:id])
   if @message.save
     redirect "/messages/#{params[:id]}"
   else
@@ -20,8 +20,8 @@ end
 
 get '/messages/:id' do
   authenticate!
-  @messages = Message.where(receiver_id: [params[:id],currtent_user.id], author_id: [currtent_user.id, params[:id]]) #order('created_at')
-  # @messages = Message.where("receiver_id = ? AND author_id = ?",params[:id], currtent_user.id)
-  # @messages << Message.where("receiver_id = ? AND author_id = ?", currtent_user.id,params[:id])
+  @messages = Message.where(receiver_id: [params[:id],current_user.id], author_id: [current_user.id, params[:id]]) #order('created_at')
+  # @messages = Message.where("receiver_id = ? AND author_id = ?", params[:id], current_user.id)
+  # @messages << Message.where("receiver_id = ? AND author_id = ?", current_user.id, params[:id])
   erb :'messages/show'
 end
