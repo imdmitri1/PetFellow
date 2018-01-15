@@ -1,13 +1,21 @@
 <ul>
-  <% @messages.each do |message| %>
-    <li>
+    <% if @messages %>
+      <% @messages.each do |message| %>
+        <li>
 
-      <% if author?(message.author_id) %>
-        <p class="right"><%= message.content %></p>
-      <% else %>
-        <p class="left"><%= message.content %></p>
+          <% if message.author_id && author?(message.author_id) %>
+            <p class="right"><%= message.content %></p>
+          <% else %>
+            <p class="left"><%= message.content %></p>
+          <% end %>
+
+        </li>
       <% end %>
-
-    </li>
-  <% end %>
+    <% end %>
 </ul>
+
+<form class="" action="/messages" method="post">
+  <textarea name="content" rows="8" cols="80"></textarea>
+  <input type="hidden" name="receiver" value="<%=@receiver%>">
+  <input type="submit" value="send">
+</form>
