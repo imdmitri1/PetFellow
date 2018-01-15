@@ -26,6 +26,7 @@
       <%if logged_in?%>
       <li><%= current_user.name.capitalize %> </li>
       <li><a href="/favorite">favorite posts</a> </li>
+      <li><a href="/messages">messages</a> </li>
       <li><a href="/users/<%= current_user.id %>">Profile </a></li>
       <li>
         <form method="post" action="/sessions">

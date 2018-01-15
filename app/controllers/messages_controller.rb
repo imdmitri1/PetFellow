@@ -1,14 +1,13 @@
 get '/messages' do
-  @conversations = Message.where(author_id: current_user.id)
+  @conversations = Message.where(author_id: current_user.id).select(:receiver_id).distinct.where.not(receiver_id: current_user.id)
   erb :'messages/index'
 end
 
-# get '/messages/new' do
-#   erb :'messages/new'
-# end
-
 post '/messages' do
   authenticate!
+  if params[:receiver].to_i == current_user.id
+    redirect "/messages"
+  end
   @message = Message.new(content: params[:content], author_id: current_user.id, receiver_id: params[:receiver])
   if @message.save
     redirect "/messages/#{params[:receiver]}"

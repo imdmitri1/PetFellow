@@ -15,6 +15,7 @@
 <a href="/users/<%=@user.id%>/followings">following</a>
 
 <% if !(your_page?) %>
+  <a href="/messages/<%= @user.id %>">message</a>
 
   <% if following? %>
     <form action="/users/<%=@user.id%>/unfollow" method="Post">
