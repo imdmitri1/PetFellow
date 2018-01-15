@@ -1,0 +1,13 @@
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+
+      <% if author?(message.author_id) %>
+        <p class="right"><%= message.content %></p>
+      <% else %>
+        <p class="left"><%= message.content %></p>
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>

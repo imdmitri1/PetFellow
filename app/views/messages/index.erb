@@ -1,7 +1,10 @@
+<ul>
 
-<% @conversations.each do |conversation| %>
-  <li>
-    <a href="/messages/<%=conversation.receiver.id%>">  <%= conversation.receiver.name %></a>
-    <!-- add last message in here -->
-  </li>
-<% end %>
+  <% @conversations.each do |conversation| %>
+    <li>
+      <a href="/messages/<%=conversation.receiver.id%>">  <%= conversation.receiver.name %></a>
+      <!-- add last message in here -->
+    </li>
+  <% end %>
+
+</ul>
