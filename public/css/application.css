@@ -1,3 +1,8 @@
+body {
+  width: 1000px;
+  margin: 15px  auto;
+}
+
 .authentication {
   max-width: 300px;
   /*position: relative;*/
@@ -42,4 +47,12 @@ img {
 .right {
   /* float: right; */
   margin-left: 20%;
+}
+
+/* ********************************** */
+
+.post {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
 }
