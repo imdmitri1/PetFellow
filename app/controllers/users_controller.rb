@@ -9,8 +9,9 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.new(params[:user]) # name, username, email, password
-  # @user.avatar = Faker::Avatar.image  #, "https://api.adorable.io/avatars/" + (n+100).to_s].sample)
+  @user = User.new(params[:user]) # username, email, password
+  rand_avatar2 = "https://api.adorable.io/avatars/" + rand(1..1000).to_s
+  @user.avatar = [Faker::Avatar.image, rand_avatar2].sample
   if @user.save
     session[:user_id] = @user.id
     redirect '/'
