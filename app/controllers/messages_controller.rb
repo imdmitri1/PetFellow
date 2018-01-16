@@ -20,7 +20,7 @@ end
 get '/messages/:id' do
   authenticate!
   @receiver = params[:id]
-  @messages = Message.where(receiver_id: [params[:id],current_user.id], author_id: [current_user.id, params[:id]]) #order('created_at')
+  @messages = Message.where(receiver_id: [params[:id],current_user.id], author_id: [current_user.id, params[:id]])
   # @messages = Message.where("receiver_id = ? AND author_id = ?", params[:id], current_user.id)
   # @messages << Message.where("receiver_id = ? AND author_id = ?", current_user.id, params[:id])
   erb :'messages/show'

@@ -22,8 +22,8 @@
 
   <nav>
     <ul class="nav">
-      <li><a href="/users"> all users </a></li>
       <%if logged_in?%>
+      <li><a href="/users"> all users </a></li>
       <li><%= current_user.name.capitalize %> </li>
       <li><a href="/favorite">favorite posts</a> </li>
       <li><a href="/messages">messages</a> </li>

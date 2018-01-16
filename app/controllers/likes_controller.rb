@@ -6,6 +6,5 @@ post '/like/:likable_type/:likable_id' do
   else
     @like.update_attributes(count: 0)
   end
-  # @like.save #???
   redirect back
 end

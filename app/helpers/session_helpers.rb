@@ -24,7 +24,7 @@ helpers do
   end
 
   def liked?(post)
-    post = post.likes.where(author_id: current_user.id)
+    post = post.likes.where(author_id: session[:user_id])
     if post[0] && post[0].count == 1
       return true
     else
@@ -33,7 +33,7 @@ helpers do
   end
 
   def favorited?(post)
-    post.favorite_posts.pluck(:user_id).include?(current_user.id)
+    post.favorite_posts.pluck(:user_id).include?(session[:user_id])
   end
 
 end

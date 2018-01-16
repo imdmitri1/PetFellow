@@ -4,7 +4,7 @@ get '/favorite' do
 end
 
 post '/favorite' do
-  p params
+  authenticate!
   favorite = FavoritePost.find_by(post_id: params[:post_id])
   if favorite == nil
     FavoritePost.create(post_id: params[:post_id], user_id: current_user.id)
