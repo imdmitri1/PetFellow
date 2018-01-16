@@ -5,20 +5,40 @@
 <div class=""><%= @post.author.username%> </div>
 
 <div class="">
-  <form action="/like/Post/<%=@post.id%>" method="post">
-    <input type="submit" value="like!">
-  </form>
+
+  <div>
+    <% if liked?(@post) %>
+      <form action="/like/Post/<%=@post.id%>" method="post">
+        <input type="submit" value="liked">
+      </form>
+    <% else %>
+      <form action="/like/Post/<%=@post.id%>" method="post">
+        <input type="submit" value="like!">
+      </form>
+    <% end %>
+  </div>
+
   <div>
     <% if @post.likes.total_count && @post.likes.total_count > 0 %>
       <span class=""><%= @post.likes.total_count %></span>
     <% end %>
   </div>
+
 </div>
 
-<form action="/favorite" method="Post">
-  <input type="hidden" name="post_id" value="<%=@post.id%>">
-  <input type="submit" value="fav">
-</form>
+<div>
+  <% if favorited?(@post) %>
+    <form action="/favorite" method="Post">
+      <input type="hidden" name="post_id" value="<%=@post.id%>">
+      <input type="submit" value="unfavor">
+    </form>
+  <% else %>
+    <form action="/favorite" method="Post">
+      <input type="hidden" name="post_id" value="<%=@post.id%>">
+      <input type="submit" value="favor">
+    </form>
+  <% end %>
+</div>
 
 <% if author?(@post.author_id) %>
   <a href="/posts/<%=@post.id%>/edit">Edit post</a>
@@ -28,37 +48,52 @@
   </form>
 <% end %>
 
-<% if @post.comments.any? %>
-  <h3>Comments:</h3>
-  <ul>
-    <% @post.comments.order("created_at").each do |comment| %>
-      <li>
-        <%= comment.content %>
-        <br>
-        <%= comment.author.username %>
-        <div class="">
-          <form action="/like/Comment/<%=comment.id%>" method="post">
-            <input type="submit" value="like!">
-          </form>
-          <div>
-            <% if comment.likes.total_count && comment.likes.total_count > 0 %>
-              <span class=""><%= comment.likes.total_count %></span>
-            <% end %>
-          </div>
-        </div>
-        <% if author?(comment.author_id) %>
-          <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
-          <form action="/posts/<%=@post.id%>/comments/<%=comment.id%>" method="Post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="delete comment">
-          </form>
-        <% end %>
+<div>
+  <% if @post.comments.any? %>
+    <h3>Comments:</h3>
+    <ul>
+      <% @post.comments.order("created_at").each do |comment| %>
+        <li>
+          <%= comment.content %>
+          <br>
+          <%= comment.author.username %>
 
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <h3>No comments yet</h3>
-<% end %>
+          <div class="">
+
+            <div>
+              <% if liked?(comment) %>
+                <form action="/like/Comment/<%=comment.id%>" method="post">
+                  <input type="submit" value="liked">
+                </form>
+              <% else %>
+                <form action="/like/Comment/<%=comment.id%>" method="post">
+                  <input type="submit" value="like!">
+                </form>
+              <% end %>
+            </div>
+
+            <div>
+              <% if comment.likes.total_count && comment.likes.total_count > 0 %>
+                <span class=""><%= comment.likes.total_count %></span>
+              <% end %>
+            </div>
+
+          </div>
+
+          <% if author?(comment.author_id) %>
+            <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
+            <form action="/posts/<%=@post.id%>/comments/<%=comment.id%>" method="Post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="delete comment">
+            </form>
+          <% end %>
+
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>No comments yet</h3>
+  <% end %>
+</div>
 
 <a href="/posts/<%=@post.id%>/comments/new">add a comment</a>

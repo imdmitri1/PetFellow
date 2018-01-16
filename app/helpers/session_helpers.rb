@@ -23,8 +23,17 @@ helpers do
     current_user.followings.include?(User.find_by(id: @user.id))
   end
 
-  #need to check this method!
-  # def authorized?
-  #   session[:user_id] == params[:id].to_i
-  # end
+  def liked?(post)
+    post = post.likes.where(author_id: current_user.id)
+    if post[0] && post[0].count == 1
+      return true
+    else
+      false
+    end
+  end
+
+  def favorited?(post)
+    post.favorite_posts.pluck(:user_id).include?(current_user.id)
+  end
+
 end

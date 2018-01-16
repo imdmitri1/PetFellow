@@ -9,19 +9,31 @@
   <% @posts.each do |post| %>
     <div class="post">
 
-      <a href="/posts/<%=post.id%>">
-        <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
-        <div><%=post.description%>
-          <br>
-          posted on <%=Date.strptime("#{post.created_at}")%>
-        </div>
-      </a>
+      <div>
+        <a href="/posts/<%=post.id%>">
+          <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
+          <div>
+          <%=post.description%>
+          </div>
+          <div>
+            posted on <%=Date.strptime("#{post.created_at}")  %>
+          </div>
+        </a>
+      </div>
 
       <div class="">
 
-        <form action="/like/Post/<%=post.id%>" method="post">
-          <input type="submit" value="like!">
-        </form>
+        <div>
+          <% if liked?(post) %>
+            <form action="/like/Post/<%=post.id%>" method="post">
+              <input type="submit" value="liked">
+            </form>
+          <% else %>
+            <form action="/like/Post/<%=post.id%>" method="post">
+              <input type="submit" value="like!">
+            </form>
+          <% end %>
+        </div>
 
         <div>
           <% if post.likes.total_count && post.likes.total_count > 0 %>
@@ -31,10 +43,19 @@
 
       </div>
 
-      <form action="/favorite" method="Post">
-        <input type="hidden" name="post_id" value="<%=post.id%>">
-        <input type="submit" value="fav">
-      </form>
+      <div>
+        <% if favorited?(post) %>
+          <form action="/favorite" method="Post">
+            <input type="hidden" name="post_id" value="<%=post.id%>">
+            <input type="submit" value="unfavor">
+          </form>
+        <% else %>
+          <form action="/favorite" method="Post">
+            <input type="hidden" name="post_id" value="<%=post.id%>">
+            <input type="submit" value="favor">
+          </form>
+        <% end %>
+      </div>
 
     </div>
   <% end %>
