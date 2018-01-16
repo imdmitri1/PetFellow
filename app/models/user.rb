@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :followings, through: :follows
   has_many :followers, through: :follows
 
-  validates_presence_of :name, :username, :email, :hashed_password
+  validates_presence_of :username, :email, :hashed_password
   validates_uniqueness_of :email, :username
   validates :bio, length: { maximum: 512 }
   validates :username, length: { maximum: 32 }

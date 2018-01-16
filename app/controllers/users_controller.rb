@@ -10,6 +10,7 @@ end
 
 post '/users' do
   @user = User.new(params[:user]) # name, username, email, password
+  # @user.avatar = Faker::Avatar.image  #, "https://api.adorable.io/avatars/" + (n+100).to_s].sample)
   if @user.save
     session[:user_id] = @user.id
     redirect '/'
