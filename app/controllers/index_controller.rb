@@ -1,8 +1,14 @@
 require 'will_paginate/array'
 
 get '/' do
+  p params
   if params.empty?
     all_posts = Post.all.order('created_at': :desc)
+  elsif params.keys.include?("feed")
+    authenticate!
+    all_posts = []
+    User.find_by(id: session[:user_id]).followings.map {|fol| fol.posts.map { |post| all_posts << post} }
+    all_posts.sort_by!(&:created_at)
   else
     likes_array = Post.all.map(&:likes).map(&:count)
     average_like_amount = likes_array.reduce(:+) / likes_array.size
