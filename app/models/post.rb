@@ -22,10 +22,12 @@ class Post < ActiveRecord::Base
 
   def self.search(word)
     found = Post.all.order('created_at': :desc).select do |post|
-              post.description.downcase.include?(word.downcase)
+              info = ""
+              info << post.description if post.description
+              info.downcase.include?(word.downcase)
             end
     return nil if word == "" || found == []
-    found 
+    found
   end
 
 end

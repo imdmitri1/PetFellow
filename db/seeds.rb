@@ -12,9 +12,9 @@ User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheG
   namee = Faker::Internet.user_name
   User.create!(username: namee.chars.shuffle.join, email: Faker::Internet.safe_email(namee), bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: [Faker::Avatar.image,"https://api.adorable.io/avatars/" + (n+100).to_s].sample, password: "password")
 end
-# description: Faker::Hipster.sentence,
+
 100.times do |n|
-  Post.create!( pic_link: "https://unsplash.it/500?image=" + (n+5).to_s, author_id: rand(1..11))
+  Post.create!(description: Faker::Hipster.sentence, pic_link: "https://unsplash.it/500?image=" + (n+5).to_s, author_id: rand(1..11))
   # sleep(1)
 end
 

@@ -37,18 +37,21 @@ class User < ActiveRecord::Base
   def self.search(word)
     word = word.downcase
     found = User.all.order('created_at': :desc).select do |user|
-              # user.name.downcase.include?(word) ||
-              user.username.downcase.include?(word) ||
-              user.bio.include?(word)
+              info = ""
+              info << user.name if user.name
+              info << user.username if user.username
+              info << user.email if user.email
+              info << user.bio if user.bio
+              info.downcase.include?(word)
             end
     return nil if word == "" || found == []
     found
   end
 
   # trying to display avatar, if user db avatar == nil
-  # so we don't save it as user avatar for him
+  # so we don't save it in db as user avatar for him
   # def avatar
-  #   @avatar || "https://api.adorable.io/avatars/10"
+  #   self.avatar || "https://api.adorable.io/avatars/10"
   # end
 
 end
