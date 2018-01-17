@@ -36,6 +36,20 @@ Shrine.plugin :activerecord # or :activerecord
 Shrine.plugin :cached_attachment_data # for forms
 Shrine.plugin :rack_file # for non-Rails apps
 
+require "shrine/storage/s3"
+
+s3_options = {
+  access_key_id:     "abc",
+  secret_access_key: "xyz",
+  region:            "my-region",
+  bucket:            "my-bucket",
+}
+
+Shrine.storages = {
+  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+  store: Shrine::Storage::S3.new(prefix: "store", **s3_options),
+}
+
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

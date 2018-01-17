@@ -17,6 +17,7 @@ gem 'shotgun', '~>0.9.1'
 gem 'bcrypt'
 gem "will_paginate"
 gem "shrine"
+gem "aws-sdk-s3", "~> 1.2"
 
 group :test do
   gem 'shoulda-matchers'
