@@ -1,4 +1,4 @@
-class ImageUploader < ActiveRecord::Base
+class ImageUploader < Shrine
 
   # plugins and uploading logic
 

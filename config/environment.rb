@@ -24,6 +24,8 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 
+require 'dotenv'
+
 require "shrine"
 require "shrine/storage/file_system"
 
@@ -39,10 +41,10 @@ Shrine.plugin :rack_file # for non-Rails apps
 require "shrine/storage/s3"
 
 s3_options = {
-  access_key_id:     "abc",
-  secret_access_key: "xyz",
-  region:            "my-region",
-  bucket:            "my-bucket",
+  access_key_id:     "<%=ENV['ABC']%>",
+  secret_access_key: "<%=ENV['XYZ']%>",
+  region:            "<%=ENV['REGION']%>",
+  bucket:            "<%=ENV['BUCKET']%>",
 }
 
 Shrine.storages = {

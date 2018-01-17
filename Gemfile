@@ -18,6 +18,7 @@ gem 'bcrypt'
 gem "will_paginate"
 gem "shrine"
 gem "aws-sdk-s3", "~> 1.2"
+gem "dotenv"
 
 group :test do
   gem 'shoulda-matchers'
