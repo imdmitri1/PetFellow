@@ -2,10 +2,15 @@
 
 <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
-<form action="/posts" method="Post">
+<!-- <form action="/posts" method="Post">
   <label for="pic_link">link</label>
   <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>">
   <label for="description">description</label>
   <input type="text" placeholder="description" name="description" value="<%=@post.description%>">
   <input type="submit" value="post">
+</form> -->
+
+<form action="/posts" method="post" enctype="multipart/form-data">
+  <input name="photo[image]" type="hidden" value="<%= @post.cached_image_data %>">
+  <input name="photo[image]" type="file">
 </form>
