@@ -2,7 +2,7 @@
 
   <% @conversations.each do |conversation| %>
     <li>
-      <a href="/messages/<%=conversation.receiver.id%>">  <%= conversation.receiver.name %></a>
+      <a href="/messages/<%=conversation.receiver.id%>">  <%= conversation.receiver.username %></a>
       <!-- add last message in here -->
     </li>
   <% end %>
