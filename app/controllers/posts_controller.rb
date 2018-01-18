@@ -39,7 +39,7 @@ put '/posts/:id' do
   authenticate!
   @post = Post.find_by(id: params[:id])
   if author?(@post.author_id)
-    @post.update_attributes(pic_link: params[:pic_link], description: params[:description])
+    @post.update_attributes(description: params[:description])
     if @post.save
       redirect "/users/#{current_user.id}"
     else

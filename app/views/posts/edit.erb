@@ -4,9 +4,7 @@
 
 <form action="/posts/<%=@post.id%>" method="Post">
   <input type="hidden" name="_method" value="Put">
-  <label for="pic_link">link</label>
-  <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>">
   <label for="description">description</label>
-  <input type="text" placeholder="description" name="description" value="<%=@post.description%>">
+  <textarea name="description" rows="8" cols="80"><%=@post.description%></textarea>
   <input type="submit" value="save">
 </form>
