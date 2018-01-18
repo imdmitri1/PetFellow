@@ -6,7 +6,7 @@
 # Message.delete_all
 # Follow.delete_all
 
-User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "tom@mail.com", password: "password")
+User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "tom@mail.com", password: "password", admin: ENV['ADMIN'])
 
 10.times do |n|
   namee = Faker::Internet.user_name

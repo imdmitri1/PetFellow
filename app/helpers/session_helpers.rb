@@ -36,4 +36,10 @@ helpers do
     post.favorite_posts.pluck(:user_id).include?(session[:user_id])
   end
 
+  def admin?
+    user = User.find_by(id: current_user.id)
+    return nil if user.admin.nil?
+    user.admin == ENV['ADMIN']
+  end
+
 end

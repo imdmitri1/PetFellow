@@ -55,8 +55,9 @@ end
 
 delete '/posts/:id' do
   @post = Post.find_by(id: params[:id])
-  if author?(@post.author_id)
+  if author?(@post.author_id) || admin?
     @post.destroy
+    redirect "/users/#{@post.author_id}" if admin?
     # delete comments & likes???
     redirect "/users/#{current_user.id}"
   else

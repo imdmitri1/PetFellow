@@ -46,7 +46,7 @@
   <% end %>
 </div>
 
-<% if author?(@post.author_id) %>
+<% if author?(@post.author_id) || admin? %>
   <a href="/posts/<%=@post.id%>/edit">Edit post</a>
   <form action="/posts/<%=@post.id%>" method="Post">
     <input type="hidden" name="_method" value="delete">
@@ -86,7 +86,7 @@
 
           </div>
 
-          <% if author?(comment.author_id) %>
+          <% if author?(comment.author_id) || admin? %>
             <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit">edit comment</a>
             <form action="/posts/<%=@post.id%>/comments/<%=comment.id%>" method="Post">
               <input type="hidden" name="_method" value="delete">
