@@ -2,15 +2,14 @@
 
 <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
-<!-- <form action="/posts" method="Post">
-  <label for="pic_link">link</label>
-  <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>">
-  <label for="description">description</label>
-  <input type="text" placeholder="description" name="description" value="<%=@post.description%>">
-  <input type="submit" value="post">
-</form> -->
 
-<form action="/posts" method="post" enctype="multipart/form-data">
+<form action="/posts" method="Post" enctype="multipart/form-data">
+  <!-- for saving links manually: -->
+  <!-- <label for="pic_link">link</label>
+  <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>"> -->
   <input name="photo[image]" type="hidden" value="<%= @post.cached_image_data %>">
   <input name="photo[image]" type="file">
+  <label for="description">description</label>
+  <textarea name="description" rows="8" cols="80"><%=@post.description%></textarea>
+  <input type="submit" value="post">
 </form>
