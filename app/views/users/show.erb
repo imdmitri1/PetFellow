@@ -1,5 +1,14 @@
 <h3>user profile page</h3>
 
+<div>
+  <% if admin? %>
+    <form action="/users/<%=@user.id%>" method="Post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete account # <%= @user.id %>, username: <%= @user.username %>">
+    </form>
+  <% end %>
+</div>
+
 <div class=""><%= @user.name%> </div>
 <div class=""><img src="<%= @user.avatar%>" alt="<%= @user.avatar%>"> </div>
 <div class=""><%= @user.username%> </div>

@@ -53,7 +53,7 @@ end
 
 delete '/users/:id' do
   user = User.find_by(id: params[:id])
-  if author?(user.id)
+  if author?(user.id) || admin?
     posts = Post.where(author_id: user.id)
     favorite_posts = FavoritePost.where(user_id: user.id)
     user_comments = Comment.where(author_id: user.id)
