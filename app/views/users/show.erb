@@ -32,7 +32,13 @@
 <div>
   <ul>
       <% @user.posts.reverse.each do |post| %>
-        <li> <a href="/posts/<%=post.id%>"><img src="<%=post.pic_link %> " alt="<%= post.pic_link %>"> <br> <%= post.description %> </a> </li>
+        <li> <a href="/posts/<%=post.id%>">
+          <% if post.pic_link %>
+            <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
+          <% else %>
+            <img src="<%=post.image_url%> " alt="<%=post.image_url%> ">
+          <% end %>
+           <br> <%= post.description %> </a> </li>
       <% end %>
   </ul>
 </div>

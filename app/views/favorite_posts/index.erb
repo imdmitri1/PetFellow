@@ -5,9 +5,13 @@
 
       <div>
         <a href="/posts/<%=fav.post.id%>">
-          <img src="<%=fav.post.pic_link%> " alt="<%=fav.post.pic_link%> ">
+          <% if fav.post.pic_link %>
+            <img src="<%=fav.post.pic_link%> " alt="<%=fav.post.pic_link%> ">
+          <% else %>
+            <img src="<%=fav.post.image_url%> " alt="<%=fav.post.image_url%> ">
+          <% end %>
           <div>
-          <%=fav.post.description%>
+            <%=fav.post.description%>
           </div>
           <div>
             posted on <%=Date.strptime("#{fav.post.created_at}")  %>

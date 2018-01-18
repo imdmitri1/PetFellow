@@ -1,6 +1,12 @@
 <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
-<div class=""><img src="<%= @post.pic_link%>" alt="<%= @post.pic_link%>"> </div>
+<div class="">
+  <% if @post.pic_link %>
+    <img src="<%=@post.pic_link%> " alt="<%=@post.pic_link%> ">
+  <% else %>
+    <img src="<%=@post.image_url%> " alt="<%=@post.image_url%> ">
+  <% end %>
+</div>
 <div class=""><%= @post.description%> </div>
 <div class=""><%= @post.author.username%> </div>
 
