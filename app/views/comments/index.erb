@@ -1,0 +1,40 @@
+<h3>All comments:</h3>
+<ul>
+  <% @all_comments.order("created_at").each do |comment| %>
+    <li>
+      <%= comment.content %>
+      <br>
+      <%= comment.author.username %>
+
+      <div class="">
+
+        <div>
+          <% if liked?(comment) %>
+            <form action="/like/Comment/<%=comment.id%>" method="post">
+              <input type="submit" value="liked">
+            </form>
+          <% else %>
+            <form action="/like/Comment/<%=comment.id%>" method="post">
+              <input type="submit" value="like!">
+            </form>
+          <% end %>
+        </div>
+
+        <div>
+          <% if comment.likes.total_count && comment.likes.total_count > 0 %>
+            <span class=""><%= comment.likes.total_count %></span>
+          <% end %>
+        </div>
+
+      </div>
+
+      <% if author?(comment.author_id) || admin? %>
+        <form action="/posts/<%=comment.post_id%>/comments/<%=comment.id%>" method="Post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete comment">
+        </form>
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>
