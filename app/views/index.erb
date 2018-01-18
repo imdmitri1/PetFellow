@@ -12,10 +12,11 @@
 
       <div>
         <a href="/posts/<%=post.id%>">
-          <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
-          <br>
-          <br>
-          <!-- <img src="<%=post.image_url%> " alt="<%=post.pic_link%> "> -->
+          <% if post.pic_link %>
+            <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
+          <% else %>
+            <img src="<%=post.image_url%> " alt="<%=post.image_url%> ">
+          <% end %>
           <div>
           <%=post.description%>
           </div>

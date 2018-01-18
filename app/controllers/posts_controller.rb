@@ -8,8 +8,8 @@ post '/posts' do
   authenticate!
   # for saving links manually:
   # @post = Post.new(pic_link: params[:pic_link], description: params[:description], author_id: current_user.id)
-  temp_post = Post.new( params[:photo])
-  @post = Post.new(pic_link: temp_post.image_url, author_id: current_user.id, description: params[:description])
+  @post = Post.new(params[:photo])
+  @post.author_id = current_user.id
   if @post.save
     redirect "/users/#{current_user.id}"
   else

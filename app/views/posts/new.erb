@@ -9,7 +9,7 @@
   <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>"> -->
   <input name="photo[image]" type="hidden" value="<%= @post.cached_image_data %>">
   <input name="photo[image]" type="file">
-  <label for="description">description</label>
+  <label for="photo[description]">description</label>
   <textarea name="description" rows="8" cols="80"><%=@post.description%></textarea>
   <input type="submit" value="post">
 </form>
