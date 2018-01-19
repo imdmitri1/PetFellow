@@ -1,6 +1,7 @@
 require 'will_paginate/array'
 
 get '/' do
+  p params
   if params.empty?
     all_posts = Post.all.order('created_at': :desc)
   elsif params.keys.include?("myfeed")
