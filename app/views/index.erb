@@ -1,71 +1,79 @@
+<div class="container">
 
-<p>
-  <strong><a href="/">recently added</a></strong>
-  <strong><a href="/?50mostliked">50 most liked</a></strong>
-  <strong><a href="/?myfeed">my feed</a></strong>
-  <!-- <strong><a href="/?">most favorited</a></strong> -->
-</p>
+  <p>
+    <strong><a href="/">recently added</a></strong>
+    <strong><a href="/?50mostliked">50 most liked</a></strong>
+    <strong><a href="/?myfeed">my feed</a></strong>
+    <!-- <strong><a href="/?">most favorited</a></strong> -->
+  </p>
 
-<div class="all-posts">
-  <% @posts.each do |post| %>
-    <div class="post">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
 
-      <div>
-        <a href="/posts/<%=post.id%>">
-          <% if post.pic_link %>
-            <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
-          <% else %>
-            <img src="<%=post.image_url%> " alt="<%=post.image_url%> ">
-          <% end %>
-          <div>
-          <%=post.description%>
-          </div>
-          <div>
-            posted on <%=Date.strptime("#{post.created_at}")  %>
-          </div>
-        </a>
-      </div>
-
-      <div class="">
-
-        <div>
-          <% if liked?(post) %>
-            <form action="/like/Post/<%=post.id%>" method="post">
-              <input type="submit" value="liked">
-            </form>
-          <% else %>
-            <form action="/like/Post/<%=post.id%>" method="post">
-              <input type="submit" value="like!">
-            </form>
-          <% end %>
+        <div class=" ">
+          <a href="/posts/<%=post.id%>">
+            <% if post.pic_link %>
+              <img src="<%=post.pic_link%> " alt="<%=post.pic_link%>" class="img-fluid">
+            <% else %>
+              <img src="<%=post.image_url%> " alt="<%=post.image_url%>" class="img-fluid">
+            <% end %>
+            <div>
+            <%=post.description%>
+            </div>
+            <div>
+              posted on <%=Date.strptime("#{post.created_at}")  %>
+            </div>
+          </a>
         </div>
 
-        <div>
-          <% if post.likes.total_count && post.likes.total_count > 0 %>
+        <div class="row">
+
+          <!-- <div class="col"></div> -->
+
+          <div class="col d-flex justify-content-center">
+            <% if favorited?(post) %>
+            <form action="/favorite" method="Post">
+              <input type="hidden" name="post_id" value="<%=post.id%>">
+              <input type="submit" value="unfavor">
+            </form>
+            <% else %>
+            <form action="/favorite" method="Post">
+              <input type="hidden" name="post_id" value="<%=post.id%>">
+              <input type="submit" value="favor">
+            </form>
+            <% end %>
+          </div>
+          
+          <div class="col d-flex justify-content-center">
+            <% if post.likes.total_count && post.likes.total_count > 0 %>
             <span class=""><%= post.likes.total_count %></span>
-          <% end %>
+            <% end %>
+          </div>
+
+          <div class="col d-flex justify-content-center">
+            <% if liked?(post) %>
+              <form action="/like/Post/<%=post.id%>" method="post">
+                <input type="submit" value="liked">
+              </form>
+            <% else %>
+              <form action="/like/Post/<%=post.id%>" method="post">
+                <input type="submit" value="like!">
+              </form>
+            <% end %>
+          </div>
+
+          <!-- <div class="col"></div> -->
+
         </div>
 
+
       </div>
+    <% end %>
+  </div>
 
-      <div>
-        <% if favorited?(post) %>
-          <form action="/favorite" method="Post">
-            <input type="hidden" name="post_id" value="<%=post.id%>">
-            <input type="submit" value="unfavor">
-          </form>
-        <% else %>
-          <form action="/favorite" method="Post">
-            <input type="hidden" name="post_id" value="<%=post.id%>">
-            <input type="submit" value="favor">
-          </form>
-        <% end %>
-      </div>
+  <div class="pagination">
+    <%= will_paginate @posts %>
+  </div>
 
-    </div>
-  <% end %>
-</div>
-
-<div class="pagination">
-  <%= will_paginate @posts %>
 </div>
