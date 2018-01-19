@@ -31,7 +31,7 @@ body {
   color: red;
 }
 
-/* ********************************** */
+/* *************** main page ******************* */
 
 .btn-outline-success {
   border: none;
@@ -92,4 +92,17 @@ body {
 .img-fluid {
   border-radius: 3px;
 }
-/* ********************************** */
+/* ************** profile ******************** */
+
+.avatar {
+  height: 150px;
+}
+
+.jumbotron {
+  padding: 2rem 4rem;
+}
+
+ .btn-group-sm * {
+   width: 100px;
+   margin: 0 auto;
+}

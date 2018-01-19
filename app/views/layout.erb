@@ -11,7 +11,7 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
 
 </head>
-<body class="container">
+  <body class="container">
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,7 +21,6 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
 
           <!-- <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -44,18 +43,18 @@
             </div>
           </li> -->
 
-          <form class="form-inline my-2 my-lg-0" action="/search" method="get">
-            <input class="form-control mr-sm-2" type="search" aria-label="Search" type="text" name="request" placeholder="search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+            <form class="form-inline " action="/search" method="get">
+              <input class="form-control mr-sm-2" type="search" aria-label="search" type="text" name="request" placeholder="search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
+            </form>
 
 
+            <ul class="navbar-nav mr-auto">
             <%if logged_in?%>
-              <!-- <li><a href="/users"> all users </a></li> -->
-              <li class="nav-item dropdown"><%= current_user.username%> </li>
-              <li class="nav-item dropdown"><a href="/favorite" class="nav-link" >favorite posts</a> </li>
-              <li class="nav-item dropdown"><a href="/messages" class="nav-link" >messages</a> </li>
-              <li class="nav-item dropdown"><a href="/users/<%= current_user.id %>" class="nav-link" >Profile </a></li>
+              <li class="nav-item nav-link disabled"><%= current_user.username%> </li>
+              <li class="nav-item"><a href="/users/<%= current_user.id %>" class="nav-link" >Profile </a></li>
+              <li class="nav-item"><a href="/favorite" class="nav-link" >favorite posts</a> </li>
+              <li class="nav-item"><a href="/messages" class="nav-link" >messages</a> </li>
 
             <% end %>
 
@@ -64,10 +63,12 @@
               <li  class="nav-item"><a href="/sessions/new" class="nav-link">Login</a></li>
               <li  class="nav-item"><a href="/users/new" class="nav-link">Sign Up</a></li>
             <% else %>
-              <form method="post" action="/sessions">
-                <input type="hidden" name="_method" value="DELETE" />
-                <button type="submit" class="btn btn-link">Logout</button>
-              </form>
+              <li>
+                <form method="post" action="/sessions">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button type="submit" class="btn btn-link">Logout</button>
+                </form>
+              </li>
             <% end %>
 
         </ul>
@@ -76,9 +77,10 @@
         </div>
     </nav>
 
-  </div>
 
-  <%= yield %>
+    <%= yield %>
+
+  </div>
 
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
