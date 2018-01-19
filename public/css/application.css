@@ -7,7 +7,6 @@ body {
 
 .authentication {
   max-width: 300px;
-  /*position: relative;*/
   margin: 0 auto;
   margin-top: 25%;
   vertical-align: center;
@@ -32,8 +31,65 @@ body {
   color: red;
 }
 
-.pagination {
-  text-align: center;
- }
+/* ********************************** */
 
+.btn-outline-success {
+  border: none;
+}
+
+.pagination * {
+  margin: 10px;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 575px) {
+  .pagination * {
+    margin: 8px;
+    font-size: 1.1em;
+    font-weight: normal;
+  }
+}
+
+.date {
+  font-size: 0.5em;
+}
+
+.info {
+  margin: 2%;
+  vertical-align: center;
+}
+
+.like-count {
+  width: 15px;
+  padding-top: 6%;
+}
+
+.like-count:hover {
+  cursor: default;
+}
+
+.name * {
+  color: #263238;
+}
+
+.name *:hover {
+  text-decoration: none;
+}
+
+.description * {
+  color: #616161;
+}
+
+.description *:hover {
+  text-decoration: none;
+}
+
+.comments * {
+  color: green;
+}
+
+.img-fluid {
+  border-radius: 3px;
+}
 /* ********************************** */
