@@ -1,17 +1,23 @@
+<div class="jumbotron jumbotron-fluid">
+    <p class="display-4 text-success"><em>Your followers:</em> </p>
+</div>
 
- <!-- user header partial -->
+ <div class="row">
+   <% if @user.followers.any? %>
+   <% @user.followers.each do |follower| %>
+           <div class="col-sm-6 col-md-4 col-lg-3">
+             <div class="card border-info mb-3">
 
- <% if @user.followers.any? %>
-   <ul>
-     <% @user.followers.each do |follower| %>
-       <li>
-         <a href="/users/<%=follower.id%>">
-           <div><img src="<%= follower.avatar %>" alt=""> </div>
-           <div><%= follower.username %><%= follower.name %></div>
-         </a>
-        </li>
-     <% end %>
-     </ul>
- <% else %>
-   <p>You don't have followers yet</p>
- <% end %>
+               <a href="/users/<%=follower.id%>"><img src="<%= follower.avatar %>" alt="<%= follower.avatar %>" class="img-fluid">   </a>
+               <a href="/users/<%=follower.id%>">Username: <%= follower.username %>  </a>
+
+             </div>
+           </div>
+         <% end %>
+   <% else %>
+
+     <p>no users found...</p>
+
+   <% end %>
+
+ </div>
