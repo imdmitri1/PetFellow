@@ -4,24 +4,25 @@
 
 
 > User stories:
-  * user can see a homepage with recent picture posts
-  * user can register / sign in
-  * registered user can:
-      * edit/delete profile
-      * create/edit/delete their own posts
-      * follow other users
-      * be followed by other users
-      * see their own profile
-      * search for users
-      * send personal messages
-      * like posts
-      * have favorite posts
+>  * user can see a homepage with recent and 50 most liked posts
+>  * user can register / sign in
+>  * registered user can:
+>      * edit/delete profile
+>      * create/edit/delete their own posts
+>      * follow other users
+>      * be followed by other users
+>      * see their own profile
+>      * see their other user's profiles
+>      * search for users and posts
+>      * send personal messages to other users
+>      * like posts
+>      * favorite posts
 
-Stretch: adding tags
+Stretch: adding tags, word checking, picture checking and tests
 
-#### Wireframing:
+#### Current version with random pictures looks like this:
 
-![Wireframing](public/wireframing.jpg)
+![Wireframing](public/version-01-19 .png)
 
 
 ### Quickstart
