@@ -1,60 +1,137 @@
+<div class="container">
 
-<div>
-  <% if @user_results %>
-    <!-- <p><%= @user_results.count %> users found</p> -->
-
-    <div>
-      <ul>
+  <div class="row">
+    <% if @user_results %>
           <% @user_results.each do |user| %>
-            <li> <a href="/users/<%=user.id%>">  <%= user.email %> <img src="<%= user.avatar %>" alt="<%= user.avatar %>"> </li> </a>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="card border-info mb-3">
+
+                <a href="/users/<%=user.id%>"><img src="<%= user.avatar %>" alt="<%= user.avatar %>" class="img-fluid">   </a>
+                <a href="/users/<%=user.id%>">Username: <%= user.username %>  </a>
+
+              </div>
+            </div>
           <% end %>
-      </ul>
-    </div>
 
-    <div class="pagination">
-      <%= will_paginate @user_results %>
-    </div>
-  <% else %>
-    <p>no users found...</p>
-  <% end %>
-
-  <% if @post_results %>
-    <!-- <p><%= @post_results.count %> posts found</p> -->
-    <% @post_results.each do |post| %>
-      <div>
-        <a href="/posts/<%=post.id%>">
-          <% if post.pic_link %>
-            <img src="<%=post.pic_link%> " alt="<%=post.pic_link%> ">
-          <% else %>
-            <img src="<%=post.image_url%> " alt="<%=post.image_url%> ">
-          <% end %>
-          <div><%=post.description%> <br> posted on <%=Date.strptime("#{post.created_at}")  %> </div>
-        </a>
-
-        <div class="">
-          <form action="/like/Post/<%=post.id%>" method="post">
-            <input type="submit" value="like!">
-          </form>
-          <div>
-            <% if post.likes.total_count && post.likes.total_count > 0 %>
-              <span class=""><%= post.likes.total_count %></span>
-            <% end %>
-          </div>
+      <nav aria-label="Search results pages">
+        <div class="pagination justify-content-center font-weight-normal">
+          <%= will_paginate @user_results %>
         </div>
-
-        <form action="/favorite" method="Post">
-          <input type="hidden" name="post_id" value="<%=post.id%>">
-          <input type="submit" value="fav">
-        </form>
-
-      </div>
-    <% end %>
-
-      <div class="pagination">
-        <%= will_paginate @post_results %>
-      </div>
+      </nav>
 
     <% else %>
-      <p>no posts found...</p>
+
+      <p>no users found...</p>
+
+    <% end %>
+
+  </div>
+
+  <div class="row">
+
+    <% if @post_results %>
+      <% @post_results.each do |post| %>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+
+          <div class="card border-info mb-3">
+
+
+              <% if post.pic_link %>
+                <img src="<%=post.pic_link%> " alt="<%=post.pic_link%>" class="img-fluid">
+              <% else %>
+                <img src="<%=post.image_url%> " alt="<%=post.image_url%>" class="img-fluid">
+              <% end %>
+
+              <div class="row">
+
+                <!-- <div class="col"></div> -->
+
+                <div class="col d-flex justify-content-center">
+                  <% if favorited?(post) %>
+                  <form action="/favorite" method="Post">
+                    <input type="hidden" name="post_id" value="<%=post.id%>">
+                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+                  </form>
+                  <% else %>
+                  <form action="/favorite" method="Post">
+                    <input type="hidden" name="post_id" value="<%=post.id%>">
+                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                  </form>
+                  <% end %>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                  <% if post.likes.total_count && post.likes.total_count > 0 %>
+                  <span class="like-count"><%= post.likes.total_count %></span>
+                  <% end %>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                  <% if liked?(post) %>
+                  <form action="/like/Post/<%=post.id%>" method="post">
+                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                  </form>
+                  <% else %>
+                  <form action="/like/Post/<%=post.id%>" method="post">
+                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  </form>
+                  <% end %>
+                </div>
+
+                <!-- <div class="col"></div> -->
+
+              </div>
+
+              <div class="info">
+                <span class="name">
+                  <a href="/users/<%=post.author.id%>">
+                    <%=post.author.username%>:
+                  </a>
+                </span>
+
+                <span class="description">
+                  <a href="/posts/<%=post.id%>">
+                      <% if post.description && post.description.length > 50 %>
+                        <%=post.description[0..50]%>...
+                      <% else %>
+                      <%=post.description%>
+                      <% end %>
+                  </a>
+                </span>
+
+                <div class="float-right comments">
+                  <% if post.comments.any? %>
+                    <a href="/posts/<%=post.id%>">
+                      <span><i class="fa fa-comments" aria-hidden="true"></i></span>
+                    </a>
+                  <% end %>
+                </div>
+
+              </div>
+
+                <!-- <div class="row justify-content-between info"> -->
+                  <!-- <div class="col-3 date align-items-center font-weight-light"> <%=Date.strptime("#{post.created_at}")%>
+                  </div> -->
+                <!-- </div> -->
+
+          </div>
+
+        </div>
+      <% end %>
+
+    </div>
+
+    <nav aria-label="Search results pages">
+      <div class="pagination justify-content-center font-weight-normal">
+        <%= will_paginate @post_results %>
+      </div>
+    </nav>
+
+  <% else %>
+
+    <p>no posts found...</p>
+
   <% end %>
+
 </div>
