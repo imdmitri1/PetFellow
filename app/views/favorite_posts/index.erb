@@ -1,58 +1,90 @@
-<div>
+<div class="jumbotron jumbotron-fluid">
+  <!-- <div class="container"> -->
+    <p class="display-4 text-success"><em>Your favorite posts:</em> </p>
+  <!-- </div> -->
+</div>
 
+<div class="row">
   <% @favorites.each do |fav| %>
-    <div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
 
-      <div>
-        <a href="/posts/<%=fav.post.id%>">
+      <div class="card border-info mb-3">
+
+
           <% if fav.post.pic_link %>
-            <img src="<%=fav.post.pic_link%> " alt="<%=fav.post.pic_link%> ">
+            <img src="<%=fav.post.pic_link%> " alt="<%=fav.post.pic_link%>" class="img-fluid">
           <% else %>
-            <img src="<%=fav.post.image_url%> " alt="<%=fav.post.image_url%> ">
+            <img src="<%=fav.post.image_url%> " alt="<%=fav.post.image_url%>" class="img-fluid">
           <% end %>
-          <div>
-            <%=fav.post.description%>
+
+          <div class="row">
+
+            <div class="col d-flex justify-content-center">
+              <% if favorited?(fav.post) %>
+              <form action="/favorite" method="Post">
+                <input type="hidden" name="post_id" value="<%=fav.post.id%>">
+                <button type="submit" class="btn btn-outline-success"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+              </form>
+              <% else %>
+              <form action="/favorite" method="Post">
+                <input type="hidden" name="post_id" value="<%=fav.post.id%>">
+                <button type="submit" class="btn btn-outline-success"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+              </form>
+              <% end %>
+            </div>
+
+            <div class="col d-flex justify-content-center">
+              <% if fav.post.likes.total_count && fav.post.likes.total_count > 0 %>
+              <span class="like-count"><%= fav.post.likes.total_count %></span>
+              <% end %>
+            </div>
+
+            <div class="col d-flex justify-content-center">
+              <% if liked?(fav.post) %>
+              <form action="/like/Post/<%=fav.post.id%>" method="post">
+                <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart" aria-hidden="true"></i></button>
+              </form>
+              <% else %>
+              <form action="/like/Post/<%=fav.post.id%>" method="post">
+                <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+              </form>
+              <% end %>
+            </div>
+
           </div>
-          <div>
-            posted on <%=Date.strptime("#{fav.post.created_at}")  %>
+
+          <div class="info">
+            <span class="name">
+              <a href="/users/<%=fav.post.author.id%>">
+                <%=fav.post.author.username%>:
+              </a>
+            </span>
+
+            <span class="description">
+              <a href="/posts/<%=fav.post.id%>">
+                  <% if fav.post.description && fav.post.description.length > 50 %>
+                    <%=fav.post.description[0..50]%>...
+                  <% else %>
+                  <%=fav.post.description%>
+                  <% end %>
+              </a>
+            </span>
+
+            <div class="float-right comments">
+              <% if fav.post.comments.any? %>
+                <a href="/posts/<%=fav.post.id%>">
+                  <span><i class="fa fa-comments" aria-hidden="true"></i></span>
+                </a>
+              <% end %>
+            </div>
+
           </div>
-        </a>
-      </div>
 
-      <div class="">
+            <!-- <div class="row justify-content-between info"> -->
+              <!-- <div class="col-3 date align-items-center font-weight-light"> <%=Date.strptime("#{fav.post.created_at}")%>
+              </div> -->
+            <!-- </div> -->
 
-        <div>
-          <% if liked?(fav.post) %>
-            <form action="/like/Post/<%=fav.post_id%>" method="Post">
-              <input type="submit" value="liked">
-            </form>
-          <% else %>
-            <form action="/like/Post/<%=fav.post_id%>" method="Post">
-              <input type="submit" value="like!">
-            </form>
-          <% end %>
-        </div>
-
-        <div>
-          <% if fav.post.likes.total_count && fav.post.likes.total_count > 0 %>
-          <span class=""><%= fav.post.likes.total_count %></span>
-          <% end %>
-        </div>
-
-      </div>
-
-      <div>
-        <% if favorited?(fav.post) %>
-          <form action="/favorite" method="Post">
-            <input type="hidden" name="post_id" value="<%=fav.post.id%>">
-            <input type="submit" value="unfavor">
-          </form>
-        <% else %>
-          <form action="/favorite" method="Post">
-            <input type="hidden" name="post_id" value="<%=fav.post.id%>">
-            <input type="submit" value="favor">
-          </form>
-        <% end %>
       </div>
 
     </div>
