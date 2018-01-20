@@ -22,7 +22,7 @@ Stretch: adding tags, word checking, picture checking and tests
 
 #### Current version with random pictures looks like this:
 
-![Wireframing](public/version-01-19 .png)
+![screenshot](public/version-01-19.png)
 
 
 ### Quickstart
