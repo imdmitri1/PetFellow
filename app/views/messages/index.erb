@@ -1,10 +1,27 @@
-<ul>
+<div class="jumbotron jumbotron-fluid">
+    <p class="display-4 text-success"><em>All conversations:</em> </p>
+</div>
 
-  <% @conversations.each do |conversation| %>
-    <li>
-      <a href="/messages/<%=conversation.receiver.id%>">  <%= conversation.receiver.username %></a>
-      <!-- add last message in here -->
-    </li>
-  <% end %>
+<div class="row">
+  <div class="col-sm-12 col-md-2 col-lg-2"></div>
+  <div class="col-sm-12 col-md-8 col-lg-8">
+    <div class="list-group">
 
-</ul>
+      <% @conversations.each do |conversation| %>
+
+        <% if conversation.receiver %>
+          <a href="/messages/<%=conversation.receiver.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
+
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1"><%= conversation.receiver.username %></h5>
+              <img src="<%= conversation.receiver.avatar%>" alt="<%= conversation.receiver.avatar%>" class="message-avatar">
+            </div>
+
+          </a>
+        <% end %>
+
+      <% end %>
+
+  </div>
+  <div class="col-sm-12 col-md-2 col-lg-2"></div>
+</div>
