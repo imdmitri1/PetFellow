@@ -1,6 +1,6 @@
 get '/comments' do
   if admin?
-    @all_comments = Comment.all
+    @all_comments = Comment.all.order(created_at: :desc)
     erb :'comments/index'
   end
 end
