@@ -70,13 +70,13 @@
         </div>
 
         <div>
-          <% if author?(@post.id)%>
-            <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit" class="btn btn-link btn-sm">edit</a>
+          <% if author?(@post.author_id)%>
+            <a href="/posts/<%=@post.id%>/edit" class="btn btn-link btn-sm">edit</a>
           <% end %>
-          <% if author?(@post.id) || admin? %>
+          <% if author?(@post.author_id) || admin? %>
             <form action="/posts/<%=@post.id%>" method="Post">
               <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="delete this post # <%= @post.id %>" class="btn btn-danger btn-sm btn-block">
+              <input type="submit" value="delete post" class="btn btn-danger btn-sm btn-block">
             </form>
           <% end %>
         </div>
