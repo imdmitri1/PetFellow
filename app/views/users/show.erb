@@ -3,7 +3,7 @@
   <% if admin? %>
     <form action="/users/<%=@user.id%>" method="Post">
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="delete account # <%= @user.id %>, username: <%= @user.username %>">
+      <input type="submit" value="delete account # <%= @user.id %>, username: <%= @user.username %>, email: <%= @user.email %>" class="btn btn-danger">
     </form>
   <% end %>
 </div>
