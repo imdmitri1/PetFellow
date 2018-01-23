@@ -114,3 +114,141 @@ body {
   height: 30px;
   /* width: 15px; */
 }
+
+/* ****************** message show ***************************** */
+
+.dialog-ul {
+  /* height: auto; */
+  list-style: none;
+  /* padding-left: 0; */
+  padding: 3px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.t-left {
+  text-align: left;
+  clear: right;
+  overflow-x: auto;
+}
+
+.li-item {
+  width: 100%;
+}
+
+.dialog-names {
+  color: #00B388;
+  font-size: 0.6em;
+}
+
+.you {
+  margin-left: 5px;
+  float: left;
+  line-height: normal;
+}
+
+.u-input {
+  float: left;
+  min-height: 32px;
+  min-width: 32px;
+  margin-bottom: 10px;
+}
+
+.t-right {
+  text-align: right;
+  float: right;
+  clear: left;
+  overflow-x: auto;
+  /*right: 0;*/
+}
+
+.r-input {
+  float: right;
+  min-height: 32px;
+  min-width: 32px;
+}
+
+.mes-column {
+  border: 1px solid #E0E0E0;
+  border-top: 0;
+  border-bottom: 0;
+  word-wrap: break-word;
+}
+
+.textarea-border {
+  border: 1px solid #E0E0E0;
+  margin-bottom: 1%;
+  margin-top: 5%;
+}
+
+/********* adding speech bubbles ******************/
+
+.u-input, .r-input, .border-right, .border-left {
+  position: relative;
+
+  max-width: 80%;
+  width: auto;
+  color: #005035;
+  border: 0.1em solid #E0E0E0;
+  border-width: thin;
+  word-wrap: normal;
+  border-radius: 7px;
+  padding: 3px 6px;
+  margin: 3px;
+}
+
+.border-right:before {
+  content: ' ';
+  position: absolute;
+  right: -8px;
+  top: -1px;
+  border: 7px solid;
+  border-color: #E0E0E0 transparent transparent transparent;
+}
+.border-right:after{
+  content: ' ';
+  position: absolute;
+  overflow:hidden;
+  top: 0px;
+  bottom: auto;
+  border: 6px solid;
+  border-color: white transparent transparent transparent;
+}
+
+.border-left:before {
+  content: ' ';
+  position: absolute;
+  left: -8px;
+  top: -1px;
+  border: 7px solid;
+  border-color: #E0E0E0 transparent transparent transparent;
+}
+.border-left:after{
+  content: ' ';
+  position: absolute;
+  left: -6px;
+  overflow:hidden;
+  top: 0px;
+  bottom: auto;
+  border: 6px solid;
+  border-color: white transparent transparent transparent;
+}
+
+.u-input, .r-input {
+  /*border: 1px solid #E0E0E0 !important;*/
+}
+
+/************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+/* *********************************************** */
