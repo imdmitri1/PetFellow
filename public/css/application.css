@@ -61,7 +61,7 @@ body {
 }
 
 .like-count {
-  width: 15px;
+  min-width: 25px;
   padding-top: 6%;
 }
 
