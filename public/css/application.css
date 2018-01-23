@@ -91,6 +91,17 @@ body {
 
 .img-fluid {
   border-radius: 3px;
+  max-height: 180px;
+}
+
+.image-modal {
+  /* height: 200px; */
+}
+
+@media screen and (max-width: 575px) {
+  .img-fluid {
+    max-height: 100%;
+  }
 }
 
 .caption-color * {

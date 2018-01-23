@@ -71,7 +71,7 @@ User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheG
 
 10.times do |n|
   namee = Faker::Internet.user_name
-  User.create!(username: namee.chars.shuffle.join, email: Faker::Internet.safe_email(namee), bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: [Faker::Avatar.image,"https://api.adorable.io/avatars/" + (n+100).to_s].sample, password: "password")
+  User.create!(name: namee, username: namee.chars.shuffle.join, email: Faker::Internet.safe_email(namee), bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: [Faker::Avatar.image,"https://api.adorable.io/avatars/" + (n+100).to_s].sample, password: "password")
 end
 
 
