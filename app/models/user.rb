@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include ImageUploader::Attachment.new(:image) # adds an `image` virtual attribute
+
   has_many :posts, foreign_key: :author_id
   has_many :favorite_posts
   has_many :comments, foreign_key: :author_id

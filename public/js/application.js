@@ -1,9 +1,10 @@
 $(document).ready(function() {
 
   // scroll massege page to bottom:
-  // $('#output-form').on('load', function(){
+  // $('#output-form').load(function(){
   //   $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
   // })
+  // $('.textarea-border').scrollTop(300)
 
  $('img').on('click', function(){
    var $parent = $(this).parent();
@@ -19,6 +20,5 @@ $(document).ready(function() {
  $('body').on('click','.close', function(){
    $(this).parent().css("display", "none");
  })
-
 
 });
