@@ -11,82 +11,71 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
 
 </head>
-  <body class="container">
+<body class="container">
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">PetFellow</a>
+  <nav class="navbar navbar-expand-md navbar-light bg-light p-2 mb-3">
+
+      <a class="navbar-brand mb-0 h1" href="/">PetFellow</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
-          <!-- <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li> -->
+        <ul class="navbar-nav ">
 
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
+            <li class="nav-item d-flex justify-content-end align-items-center">
+              <div>
+                <form class="form-inline one-line" action="/search" method="get">
+                  <input class="form-control form-control-sm" type="search" aria-label="search" type="text" name="request" placeholder="search">
+                  <button class="btn btn-outline-secondary btn-sm" type="submit">search</button>
+                </form>
+              </div>
+            </li>
 
-
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li> -->
-
-            <form class="form-inline " action="/search" method="get">
-              <input class="form-control mr-sm-2" type="search" aria-label="search" type="text" name="request" placeholder="search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
-            </form>
-
-
-            <ul class="navbar-nav mr-auto">
             <%if logged_in?%>
-              <li class="nav-item nav-link disabled"><%= current_user.username%> </li>
-              <li class="nav-item"><a href="/users/<%= current_user.id %>" class="nav-link" >Profile </a></li>
-              <li class="nav-item"><a href="/favorite" class="nav-link" >favorite posts</a> </li>
-              <li class="nav-item"><a href="/messages" class="nav-link" >messages</a> </li>
 
-            <% end %>
-
-
-            <% if !(logged_in?) %>
-              <li  class="nav-item"><a href="/sessions/new" class="nav-link">Login</a></li>
-              <li  class="nav-item"><a href="/users/new" class="nav-link">Sign Up</a></li>
-            <% else %>
-              <li>
+            <li class="nav-item dropdown d-flex justify-content-end">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/users/<%= current_user.id %>" class="nav-link" >Profile page</a>
+                <a class="dropdown-item" href="/posts/new" class="nav-link">new post</a>
+                <a class="dropdown-item" href="/favorite" class="nav-link" >favorite posts</a>
+                <a class="dropdown-item" href="/messages" class="nav-link" >messages</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" class="nav-link">edit profile</a>
+                <div class="dropdown-divider"></div>
                 <form method="post" action="/sessions">
                   <input type="hidden" name="_method" value="DELETE" />
-                  <button type="submit" class="btn btn-link">Logout</button>
+                  <button type="submit" class="btn btn-link dropdown-item">Logout</button>
                 </form>
-              </li>
+              </div>
+            </li>
+
+            <% else %>
+
+              <li  class="nav-item d-flex justify-content-end"><a href="/sessions/new" class="nav-link pading-right">Login</a> <a href="/users/new" class="nav-link">Sign Up</a></li>
+
             <% end %>
 
-        </ul>
-
+          </ul>
 
         </div>
+
     </nav>
 
 
     <%= yield %>
 
-  </div>
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/application.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/application.js"></script>
 </body>
 </html>

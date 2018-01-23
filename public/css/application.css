@@ -89,7 +89,7 @@ body {
   color: green;
 }
 
-.img-fluid {
+.img-main {
   border-radius: 3px;
   max-height: 180px;
 }
@@ -99,14 +99,25 @@ body {
 }
 
 @media screen and (max-width: 575px) {
-  .img-fluid {
+  .img-main {
     max-height: 100%;
+  }
+  .one-line {
+    margin-top: 10px;
+    min-width: 300px;
+  }
+  .one-line input {
+    width: 250px;
+  }
+  li a.nav-link.pading-right {
+    padding-right: 10px;
   }
 }
 
 .caption-color * {
   color: grey;
 }
+
 
 /* ************** profile ******************** */
 

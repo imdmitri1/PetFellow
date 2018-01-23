@@ -32,7 +32,7 @@
       </div>
 
       <div class="col-sm-6 col-md-4 mx-auto align-items-center">
-        <div class="btn-group-vertical btn-group-sm">
+        <div class="btn-group-vertical btn-group-sm  d-flex justify-content-center">
           <% if your_page? %>
             <div class="">
               <a href="/posts/new" class="btn btn-outline-dark btn-sm">new post</a>
@@ -89,9 +89,9 @@
 
 
           <% if post.pic_link %>
-            <img src="<%=post.pic_link%> " alt="<%=post.pic_link%>" class="img-fluid">
+            <img src="<%=post.pic_link%> " alt="<%=post.pic_link%>" class="img-fluid img-main mx-auto d-block">
           <% else %>
-            <img src="<%=post.image_url%> " alt="<%=post.image_url%>" class="img-fluid">
+            <img src="<%=post.image_url%> " alt="<%=post.image_url%>" class="img-fluid img-main mx-auto d-block">
           <% end %>
 
           <div class="row">
