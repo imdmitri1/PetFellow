@@ -51,8 +51,8 @@
               </div>
 
               <div class="col d-flex justify-content-center">
-                <% if post.likes.total_count && post.likes.total_count > 0 %>
-                <span class="like-count"><%= post.likes.total_count %></span>
+                <% if post.likes.total_count %>
+                <span class="like-count"><a class="btn btn-link align-items-start" href="/posts/<%=post.id%>"><%= post.likes.total_count %></a></span>
                 <% end %>
               </div>
 

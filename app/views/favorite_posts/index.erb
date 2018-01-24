@@ -32,7 +32,7 @@
             </div>
 
             <div class="col d-flex justify-content-center">
-              <% if fav.post.likes.total_count && fav.post.likes.total_count > 0 %>
+              <% if fav.post.likes.total_count %>
               <span class="like-count"><%= fav.post.likes.total_count %></span>
               <% end %>
             </div>

@@ -10,14 +10,14 @@
       <% @conversations.each do |conversation| %>
 
         <% if conversation.receiver %>
-          <a href="/messages/<%=conversation.receiver.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
 
             <div class="d-flex w-100 justify-content-between">
+              <a href="/messages/<%=conversation.receiver.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
               <h5 class="mb-1"><%= conversation.receiver.username %></h5>
-              <img src="<%= conversation.receiver.avatar%>" alt="<%= conversation.receiver.avatar%>" class="message-avatar">
+            </a>
+              <a class="message-avatar" href="/users/<%= conversation.receiver.id %>"><img src="<%= conversation.receiver.avatar%>" alt="<%= conversation.receiver.avatar%>" ></a>
             </div>
 
-          </a>
         <% end %>
 
       <% end %>
