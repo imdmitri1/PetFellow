@@ -1,3 +1,5 @@
+require 'faker'
+
 # User.delete_all
 # Post.delete_all
 # FavoritePost.delete_all

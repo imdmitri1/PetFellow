@@ -17,7 +17,6 @@ require 'logger'
 
 require 'dotenv/load'
 require 'bcrypt'
-require 'faker'
 
 
 require 'sinatra'
