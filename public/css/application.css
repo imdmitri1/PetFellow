@@ -13,7 +13,7 @@ body {
 
 /* ********************************** */
 
-.authentication {
+/* .authentication {
   max-width: 300px;
   margin: 0 auto;
   margin-top: 25%;
@@ -31,6 +31,14 @@ body {
   display: block;
   text-align: center;
 
+} */
+
+.auth {
+  margin-top: 20%;
+}
+
+.auth *{
+  text-align: center;
 }
 
 .errors {
