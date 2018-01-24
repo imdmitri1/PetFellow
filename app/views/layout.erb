@@ -14,9 +14,9 @@
 <body class="container">
 
 
-  <nav class="navbar navbar-expand-md navbar-light bg-light p-2 mb-3">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light p-2 mb-3">
 
-      <a class="navbar-brand mb-0 h1" href="/">PetFellow</a>
+      <a class="navbar-brand mb-0 h1" href="/"><i class="fa fa-paw" aria-hidden="true"></i> <span class="PF">PetFellow</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,7 +29,7 @@
               <div>
                 <form class="form-inline one-line" action="/search" method="get">
                   <input class="form-control form-control-sm" type="search" aria-label="search" type="text" name="request" placeholder="search">
-                  <button class="btn btn-outline-secondary btn-sm" type="submit">search</button>
+                  <button class="btn btn-outline-secondary btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
               </div>
             </li>
@@ -41,16 +41,16 @@
                 Profile
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/users/<%= current_user.id %>" class="nav-link" >Profile page</a>
-                <a class="dropdown-item" href="/posts/new" class="nav-link">new post</a>
-                <a class="dropdown-item" href="/favorite" class="nav-link" >favorite posts</a>
-                <a class="dropdown-item" href="/messages" class="nav-link" >messages</a>
+                <a class="dropdown-item" href="/users/<%= current_user.id %>" class="nav-link" ><i class="fa fa-user" aria-hidden="true"></i> profile page</a>
+                <a class="dropdown-item" href="/posts/new" class="nav-link"><i class="fa fa-plus" aria-hidden="true"></i> new post</a>
+                <a class="dropdown-item" href="/favorite" class="nav-link"><i class="fa fa-star" aria-hidden="true"></i> favorite posts</a>
+                <a class="dropdown-item" href="/messages" class="nav-link"><i class="fa fa-envelope" aria-hidden="true"></i> messages</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" class="nav-link">edit profile</a>
+                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" class="nav-link"><i class="fa fa-cogs" aria-hidden="true"></i> edit profile</a>
                 <div class="dropdown-divider"></div>
                 <form method="post" action="/sessions">
                   <input type="hidden" name="_method" value="DELETE" />
-                  <button type="submit" class="btn btn-link dropdown-item">Logout</button>
+                  <button type="submit" class="btn btn-link dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> logout</button>
                 </form>
               </div>
             </li>

@@ -118,6 +118,9 @@ body {
   color: grey;
 }
 
+.dropdown-menu .fa {
+  margin-right: 10px;
+}
 
 /* ************** profile ******************** */
 
@@ -126,7 +129,7 @@ body {
 }
 
 .jumbotron {
-  padding: 2rem 4rem;
+  padding: 0.5rem 2rem;
 }
 
  .btn-group-sm * {
