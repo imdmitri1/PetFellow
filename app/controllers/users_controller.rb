@@ -5,7 +5,7 @@ end
 
 get '/users/new' do
   @user = User.new
-  erb :'users/new', layout: :authentication_layout
+  erb :'users/new' #, layout: :authentication_layout
 end
 
 post '/users' do
@@ -18,7 +18,7 @@ post '/users' do
   else
     status 422
     @errors = @user.errors.full_messages
-    erb :'users/new', layout: :authentication_layout
+    erb :'users/new' #, layout: :authentication_layout
   end
 end
 

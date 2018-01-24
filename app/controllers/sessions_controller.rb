@@ -1,6 +1,6 @@
 
 get '/sessions/new' do
-  erb :'sessions/new', layout: :authentication_layout
+  erb :'sessions/new' #, layout: :authentication_layout
 end
 
 post '/sessions' do
@@ -11,7 +11,7 @@ post '/sessions' do
   else
     status 401
     @errors = ["Your username or password was wrong"]
-    erb :'sessions/new', layout: :authentication_layout
+    erb :'sessions/new' #, layout: :authentication_layout
   end
 end
 
