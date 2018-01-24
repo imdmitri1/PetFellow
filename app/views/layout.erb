@@ -1,75 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
   <title>PetFellow</title>
+
+  <meta name="description" content="Social network for pet lovers!">
+  <meta name="keywords" content="pictures,photo,pets,fellow,cats,dogs,cute">
+  <meta name="author" content="imdmitri1">
+  <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/application.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Open+Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css"
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
 
 </head>
-<body class="container">
+<body>
+  <div class="container body">
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light p-1 px-2 mb-3 rounded">
+
+        <a class="navbar-brand my-0 py-0 h1" href="/"><span class="PF"><i class="fa fa-paw paw" aria-hidden="true"></i> PetFellow</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+          <ul class="navbar-nav ">
+
+              <li class="nav-item d-flex justify-content-end align-items-center">
+                <div>
+                  <form class="form-inline one-line" action="/search" method="get">
+                    <input class="form-control form-control-sm" type="search" aria-label="search" type="text" name="request" placeholder="search">
+                    <button class="btn btn-outline-secondary btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </form>
+                </div>
+              </li>
+
+              <%if logged_in?%>
+
+              <li class="nav-item dropdown d-flex justify-content-end">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/users/<%= current_user.id %>" class="nav-link" ><i class="fa fa-user" aria-hidden="true"></i> profile page</a>
+                  <a class="dropdown-item" href="/posts/new" class="nav-link"><i class="fa fa-plus" aria-hidden="true"></i> new post</a>
+                  <a class="dropdown-item" href="/favorite" class="nav-link"><i class="fa fa-star" aria-hidden="true"></i> favorite posts</a>
+                  <a class="dropdown-item" href="/messages" class="nav-link"><i class="fa fa-envelope" aria-hidden="true"></i> messages</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" class="nav-link"><i class="fa fa-cogs" aria-hidden="true"></i> edit profile</a>
+                  <div class="dropdown-divider"></div>
+                  <form method="post" action="/sessions">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit" class="btn btn-link dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> logout</button>
+                  </form>
+                </div>
+              </li>
+
+              <% else %>
+
+                <li  class="nav-item d-flex justify-content-end"><a href="/sessions/new" class="nav-link pading-right">Login</a> <a href="/users/new" class="nav-link">Sign Up</a></li>
+
+              <% end %>
+
+            </ul>
+
+          </div>
+
+      </nav>
 
 
-  <nav class="navbar navbar-expand-sm navbar-light bg-light p-1 px-2 mb-3 rounded">
-
-      <a class="navbar-brand my-0 py-0 h1" href="/"><span class="PF"><i class="fa fa-paw paw" aria-hidden="true"></i> PetFellow</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-
-        <ul class="navbar-nav ">
-
-            <li class="nav-item d-flex justify-content-end align-items-center">
-              <div>
-                <form class="form-inline one-line" action="/search" method="get">
-                  <input class="form-control form-control-sm" type="search" aria-label="search" type="text" name="request" placeholder="search">
-                  <button class="btn btn-outline-secondary btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </form>
-              </div>
-            </li>
-
-            <%if logged_in?%>
-
-            <li class="nav-item dropdown d-flex justify-content-end">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/users/<%= current_user.id %>" class="nav-link" ><i class="fa fa-user" aria-hidden="true"></i> profile page</a>
-                <a class="dropdown-item" href="/posts/new" class="nav-link"><i class="fa fa-plus" aria-hidden="true"></i> new post</a>
-                <a class="dropdown-item" href="/favorite" class="nav-link"><i class="fa fa-star" aria-hidden="true"></i> favorite posts</a>
-                <a class="dropdown-item" href="/messages" class="nav-link"><i class="fa fa-envelope" aria-hidden="true"></i> messages</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" class="nav-link"><i class="fa fa-cogs" aria-hidden="true"></i> edit profile</a>
-                <div class="dropdown-divider"></div>
-                <form method="post" action="/sessions">
-                  <input type="hidden" name="_method" value="DELETE" />
-                  <button type="submit" class="btn btn-link dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> logout</button>
-                </form>
-              </div>
-            </li>
-
-            <% else %>
-
-              <li  class="nav-item d-flex justify-content-end"><a href="/sessions/new" class="nav-link pading-right">Login</a> <a href="/users/new" class="nav-link">Sign Up</a></li>
-
-            <% end %>
-
-          </ul>
-
-        </div>
-
-    </nav>
-
-
-    <%= yield %>
-
+      <%= yield %>
+  </div>
 
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"

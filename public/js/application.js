@@ -21,4 +21,6 @@ $(document).ready(function() {
    $(this).parent().css("display", "none");
  })
 
+ $('.container.body').css("min-height",window.innerHeight - 30)
+
 });

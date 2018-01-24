@@ -3,35 +3,28 @@ body {
   background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  font-family: 'Open Sans', sans-serif;
   /* background-image: url("../favicon.png"); */
   /* background-size: 200px 200px; */
   background-attachment: fixed;
+  height: 100%;
+}
 
-  /* width: 1000px;
-  margin: 15px  auto; */
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+}
+
+.footer span {
+  margin: 0 10px;
+  font-size: 1.2em;
+  font-family: 'Cabin Sketch', cursive;
+
 }
 
 /* ********************************** */
-
-/* .authentication {
-  max-width: 300px;
-  margin: 0 auto;
-  margin-top: 25%;
-  vertical-align: center;
-  list-style: none;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-}
-.authentication label {
-  display: none;
-}
-
-.authentication * {
-  margin: 10px auto;
-  display: block;
-  text-align: center;
-
-} */
 
 .auth {
   margin-top: 20%;
@@ -50,8 +43,9 @@ body {
 /* *************** main page ******************* */
 
 .PF {
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   font-size: 1.5em;
+  font-family: 'Cabin Sketch', cursive;
 }
 
 .btn-outline-success {

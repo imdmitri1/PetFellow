@@ -5,14 +5,15 @@
 
 > User stories:
 >  * user can see a homepage with recent and 50 most liked posts
+>  * user can preview pictures
 >  * user can register / sign in
 >  * registered user can:
->      * edit/delete profile
 >      * create/edit/delete their own posts
+>      * edit/delete profile
 >      * follow other users
 >      * be followed by other users
 >      * see their own profile
->      * see their other user's profiles
+>      * see other user's profiles
 >      * search for users and posts
 >      * send personal messages to other users
 >      * like posts
