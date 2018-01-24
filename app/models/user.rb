@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 512 }
   validates :username, length: { maximum: 32 }
   validates :email, length: { maximum: 64 }
-  #  validate :password_length
+  validate :password_length
 
 
   def password
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(new_password)
-  #   @raw_password = new_password
+    @raw_password = new_password
     @password = BCrypt::Password.create(new_password)
     self.hashed_password = @password
   end
@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
     self.password == password
   end
 
-  #  def password_length
-  #    errors.add(:password, "must be at least six characters") unless @raw_password.length >= 6
-  #  end
+  def password_length
+    errors.add(:password, "must be at least six characters") unless @raw_password.length >= 6
+  end
 
   def self.search(word)
     word = word.downcase
