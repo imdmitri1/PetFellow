@@ -8,11 +8,11 @@ $(document).ready(function() {
 
  $('img').on('click', function(){
    var $parent = $(this).parent();
-   var moda = $parent.find('.myModa')
-   var modaImg = moda.find('img')
-   var captionText = $parent.find('.caption')
+   var moda = $parent.find('.myModa');
+   var modaImg = moda.find('img');
+   var captionText = $parent.find('.caption');
    moda.css("display", "block");
-   modaImg.attr('src', $(this).attr('src'))
+   modaImg.attr('src', $(this).attr('src'));
    captionText.html($parent.parent().find('.info').html()).addClass('caption-color');
 
  })
@@ -21,6 +21,27 @@ $(document).ready(function() {
    $(this).parent().css("display", "none");
  })
 
- $('.container.body').css("min-height",window.innerHeight - 30)
+ // make page min-height the height of the window
+ // $('.container.body').css("min-height",window.innerHeight - 30)
 
+  // ajaxifying likes
+  // $('.fa.fa-heart-o').parent().on('click', function(event){
+  //   event.preventDefault();
+  //   console.log($(this).parent().attr('action'))
+  // });
+  //
+  // $('.fa.fa-heart').parent().on('click', function(event){
+  //   event.preventDefault();
+  //   console.log($(this).parent().attr('action') + "!!!")
+  // });
+  //
+  // $('.fa.fa-star-o').parent().on('click', function(event){
+  //   event.preventDefault();
+  //   console.log($(this).parent().attr('action'))
+  // });
+  //
+  // $('.fa.fa-star').parent().on('click', function(event){
+  //   event.preventDefault();
+  //   console.log($(this).parent().attr('action') + "!!!")
+  // });
 });
