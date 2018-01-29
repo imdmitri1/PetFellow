@@ -1,9 +1,7 @@
-<div class="errors">
+<div class="">
   <% if errors %>
-  <ul>
     <% errors.each do |msg| %>
-    <li><%= msg %></li>
+    <div class="btn btn-outline-danger btn-block disabled error-color"><%= msg %></div>
     <% end %>
-  </ul>
   <% end %>
 </div>

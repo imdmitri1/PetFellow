@@ -18,8 +18,9 @@ post '/posts/:id/comments' do
     redirect "/posts/#{params[:id]}"
   else
     status 422
-    @errors = @comments.errors.full_messages
-    erb :'commets/new'
+    @post = Post.find_by(id: params[:id])
+    @errors = @comment.errors.full_messages
+    erb :'comments/new'
   end
 end
 
@@ -42,8 +43,8 @@ put '/posts/:id/comments/:comment_id' do
       redirect "/posts/#{params[:id]}"
     else
       status 422
-      @errors = @comments.errors.full_messages
-      erb :'commets/edit'
+      @errors = @comment.errors.full_messages
+      erb :'comments/edit'
     end
   else
     @errors = ["It's not your comment!"]

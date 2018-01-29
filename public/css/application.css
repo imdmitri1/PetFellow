@@ -34,10 +34,8 @@ body {
   text-align: center;
 }
 
-.errors {
-  margin-left: -31px;
-  /*text-align: center;*/
-  color: red;
+.error-color.disabled {
+  opacity: 1;
 }
 
 /* *************** main page ******************* */
