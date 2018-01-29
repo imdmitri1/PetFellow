@@ -21,6 +21,12 @@ $(document).ready(function() {
    $(this).parent().css("display", "none");
  })
 
+  // add min body height:
+ $('.main-cont').css("min-height",window.innerHeight - 105)
+ $( window ).resize(function() {
+   $('.main-cont').css("min-height",window.innerHeight - 105)
+ });
+
  // make page min-height the height of the window
  // $('.container.body').css("min-height",window.innerHeight - 30)
 
@@ -44,4 +50,7 @@ $(document).ready(function() {
   //   event.preventDefault();
   //   console.log($(this).parent().attr('action') + "!!!")
   // });
+
+
+
 });

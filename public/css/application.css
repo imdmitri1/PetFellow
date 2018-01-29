@@ -7,18 +7,18 @@ body {
   /* background-image: url("../favicon.png"); */
   /* background-size: 200px 200px; */
   background-attachment: fixed;
-  height: 100%;
+  min-height: 100%;
 }
 
 .footer {
+  height: 30px;
   position: relative;
   bottom: 0;
-  width: 100%;
   background-color: #f8f9fa;
 }
 
 .footer span {
-  margin: 0 10px;
+  margin: 0 20px;
   font-size: 1.2em;
   font-family: 'Cabin Sketch', cursive;
 
