@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   validates :email, length: { maximum: 64 }
   validate :password_length
 
-
   def password
     @password ||= BCrypt::Password.new(hashed_password)
   end
@@ -27,6 +26,7 @@ class User < ActiveRecord::Base
     @password = BCrypt::Password.create(new_password)
     self.hashed_password = @password
   end
+
 
   def authenticate(password)
     self.password == password
