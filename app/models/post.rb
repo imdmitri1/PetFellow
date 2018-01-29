@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :likable
   has_many :comments
 
-  validates_presence_of :author_id, :image_data
+  validates_presence_of :author_id
+  validates :image_data, presence: true, unless: -> (post){post.pic_link.present?}
   validates :description, length: { maximum: 512 }
 
   # need to fix it
