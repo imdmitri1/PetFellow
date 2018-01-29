@@ -19,6 +19,7 @@ gem "will_paginate"
 gem "shrine"
 gem "aws-sdk-s3", "~> 1.2"
 gem "dotenv"
+gem 'faker'
 
 group :test do
   gem 'shoulda-matchers'
@@ -29,5 +30,4 @@ end
 
 group :test, :development do
   gem 'factory_girl'
-  gem 'faker'
 end
