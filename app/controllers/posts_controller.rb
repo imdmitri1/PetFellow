@@ -44,7 +44,7 @@ put '/posts/:id' do
       redirect "/users/#{current_user.id}"
     else
       status 422
-      @errors = @posts.errors.full_messages
+      @errors = @post.errors.full_messages
       erb :'posts/edit'
     end
   else

@@ -135,7 +135,7 @@
                 <% end %>
                 <% if author?(comment.author_id) || admin? %>
                   <div class="d-inline-block">
-                    <form action="/posts/<%=comment.id%>/comments/<%=comment.id%>" method="Post">
+                    <form action="/posts/<%=comment.post_id%>/comments/<%=comment.id%>" method="Post">
                       <input type="hidden" name="_method" value="delete">
                       <input type="submit" value="delete" class="btn btn-link btn-sm">
                     </form>

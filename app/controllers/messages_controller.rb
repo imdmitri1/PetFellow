@@ -19,7 +19,7 @@ end
 
 get '/messages/:id' do
   authenticate!
-  @receiver = params[:id]
+  @receiver = User.find_by(id: params[:id])
   # @messages = Message.where(receiver_id: [params[:id],current_user.id], author_id: [current_user.id, params[:id]]) # not safe!
   user_messages = []
   user_messages << Message.where("receiver_id = ? AND author_id = ?", params[:id], current_user.id)

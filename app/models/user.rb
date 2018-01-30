@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 512 }
   validates :username, length: { maximum: 32 }
   validates :email, length: { maximum: 64 }
-  validate :password_length
+  validate :password_length, :on => :create
 
   def password
     @password ||= BCrypt::Password.new(hashed_password)

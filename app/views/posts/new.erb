@@ -1,12 +1,13 @@
 
 
-<%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
 <div class="row">
   <div class="col-sm-12 col-md-2 col-lg-2"></div>
   <div class="col-sm-12 col-md-8 col-lg-8">
 
     <h3 class="text-center">create new post!</h3>
+
+      <%= erb :'partials/_errors', layout: false, locals: {errors: @errors} %>
 
       <form action="/posts" method="Post" enctype="multipart/form-data">
         <!-- for saving links manually: -->
