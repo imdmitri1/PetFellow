@@ -21,12 +21,12 @@
               <% if favorited?(fav.post) %>
               <form action="/favorite" method="Post">
                 <input type="hidden" name="post_id" value="<%=fav.post.id%>">
-                <button type="submit" class="btn btn-outline-success"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+                <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
               </form>
               <% else %>
               <form action="/favorite" method="Post">
                 <input type="hidden" name="post_id" value="<%=fav.post.id%>">
-                <button type="submit" class="btn btn-outline-success"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
               </form>
               <% end %>
             </div>
@@ -74,7 +74,7 @@
                   <span><i class="fa fa-comments" aria-hidden="true"></i></span>
                 </a>
               <% else %>
-                <a href="/posts/<%=post.id%>">
+                <a href="/posts/<%=fav.post.id%>">
                   <span><i class="fa fa-comments-o" aria-hidden="true"></i></span>
                 </a>
               <% end %>

@@ -38,33 +38,33 @@
 
               <div class="col d-flex justify-content-center  px-0 ">
                 <% if favorited?(post) %>
-                <form action="/favorite" method="Post">
-                  <input type="hidden" name="post_id" value="<%=post.id%>">
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-star" aria-hidden="true"></i></i></button>
-                </form>
+                  <form action="/favorite" method="Post">
+                    <input type="hidden" name="post_id" value="<%=post.id%>">
+                    <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+                  </form>
                 <% else %>
-                <form action="/favorite" method="Post">
-                  <input type="hidden" name="post_id" value="<%=post.id%>">
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-                </form>
+                  <form action="/favorite" method="Post">
+                    <input type="hidden" name="post_id" value="<%=post.id%>">
+                    <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                  </form>
                 <% end %>
               </div>
 
               <div class="col d-flex justify-content-center  px-0">
                 <% if post.likes.total_count %>
-                <span class="like-count d-flex align-items-center mx-auto"><%= post.likes.total_count %></span>
+                  <span class="like-count d-flex align-items-center mx-auto"><%= post.likes.total_count %></span>
                 <% end %>
               </div>
 
               <div class="col d-flex justify-content-center  px-0 ">
                 <% if liked?(post) %>
-                <form action="/like/Post/<%=post.id%>" method="post">
-                  <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                </form>
+                  <form action="/like/Post/<%=post.id%>" method="post">
+                    <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                  </form>
                 <% else %>
-                <form action="/like/Post/<%=post.id%>" method="post">
-                  <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </form>
+                  <form action="/like/Post/<%=post.id%>" method="post">
+                    <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  </form>
                 <% end %>
               </div>
 

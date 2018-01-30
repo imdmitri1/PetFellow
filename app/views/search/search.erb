@@ -51,12 +51,12 @@
                   <% if favorited?(post) %>
                   <form action="/favorite" method="Post">
                     <input type="hidden" name="post_id" value="<%=post.id%>">
-                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+                    <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
                   </form>
                   <% else %>
                   <form action="/favorite" method="Post">
                     <input type="hidden" name="post_id" value="<%=post.id%>">
-                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                    <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
                   </form>
                   <% end %>
                 </div>

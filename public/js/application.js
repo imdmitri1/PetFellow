@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  // enlarge photo on main page
  $('img').on('click', function(){
    var $parent = $(this).parent();
    var moda = $parent.find('.myModa');
@@ -26,13 +27,13 @@ $(document).ready(function() {
     event.preventDefault();
     $this = $(this);
     var link = $this.parent().attr('action');
+    $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+    $this.removeClass('fho').addClass('fh');
     $.ajax({
       url: link,
       type: "Post"
     })
     .done(function(response){
-      $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
-      $this.removeClass('fho').addClass('fh');
       $this.closest('.row').find('.like-count').text(response);
     });
   });
@@ -41,27 +42,44 @@ $(document).ready(function() {
     event.preventDefault();
     $this = $(this);
     var link = $this.parent().attr('action');
+    $this.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+    $this.removeClass('fh').addClass('fho');
     $.ajax({
       url: link,
       type: "Post"
     })
     .done(function(response){
-      $this.find('i').removeClass('fa-heart').addClass('fa-heart-o');
-      $this.removeClass('fh').addClass('fho');
       $this.closest('.row').find('.like-count').text(response);
     })
   });
 
-  // $('.fa.fa-star-o').parent().on('click', function(event){
-  //   event.preventDefault();
-  //   console.log($(this).parent().attr('action'))
-  // });
-  //
-  // $('.fa.fa-star').parent().on('click', function(event){
-  //   event.preventDefault();
-  //   console.log($(this).parent().attr('action') + "!!!")
-  // });
+  // ajaxifying favorites
+  $('.col').on('click','button.fso', function(event){
+    event.preventDefault();
+    $this = $(this);
+    var link = $this.parent().attr('action');
+    var post_id = {"post_id": $this.siblings('input').attr('value') }
+    $this.find('i').removeClass('fa-star-o').addClass('fa-star');
+    $this.removeClass('fso').addClass('fs');
+    $.ajax({
+      url: link,
+      type: "Post",
+      data: post_id
+    })
+  });
 
-
+  $('.col').on('click','button.fs', function(event){
+    event.preventDefault();
+    $this = $(this);
+    var link = $this.parent().attr('action');
+    var post_id = {"post_id": $this.siblings('input').attr('value') }
+    $this.find('i').removeClass('fa-star').addClass('fa-star-o');
+    $this.removeClass('fs').addClass('fso');
+    $.ajax({
+      url: link,
+      type: "Post",
+      data: post_id
+    })
+  });
 
 });
