@@ -29,11 +29,13 @@ $(document).ready(function() {
     var link = $this.parent().attr('action');
     $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
     $this.removeClass('fho').addClass('fh');
+    $this.closest('.row').find('.like-count').addClass('greyColor')
     $.ajax({
       url: link,
       type: "Post"
     })
     .done(function(response){
+      $this.closest('.row').find('.like-count').removeClass('greyColor')
       $this.closest('.row').find('.like-count').text(response);
     });
   });
@@ -44,11 +46,13 @@ $(document).ready(function() {
     var link = $this.parent().attr('action');
     $this.find('i').removeClass('fa-heart').addClass('fa-heart-o');
     $this.removeClass('fh').addClass('fho');
+    $this.closest('.row').find('.like-count').addClass('greyColor')
     $.ajax({
       url: link,
       type: "Post"
     })
     .done(function(response){
+      $this.closest('.row').find('.like-count').removeClass('greyColor')
       $this.closest('.row').find('.like-count').text(response);
     })
   });

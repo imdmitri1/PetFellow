@@ -36,12 +36,18 @@
 
           <div class="card border-info mb-3">
 
-
-              <% if post.pic_link %>
-                <img src="<%=post.pic_link%> " alt="<%=post.pic_link%>" class="img-fluid img-main mx-auto d-block">
-              <% else %>
-                <img src="<%=post.image_url%> " alt="<%=post.image_url%>" class="img-fluid img-main mx-auto d-block">
-              <% end %>
+              <div class="image-modal">
+                <% if post.pic_link %>
+                  <img src="<%=post.pic_link%> " alt="<%=post.pic_link%>" class="img-fluid myImg mx-auto d-block img-main">
+                <% else %>
+                  <img src="<%=post.image_url%> " alt="<%=post.image_url%>" class="img-fluid myImg mx-auto d-block img-main">
+                <% end %>
+                <div class="moda myModa">
+                  <span class="close">&times;</span>
+                  <img src="" class="moda-content img01" >
+                  <div class="caption"></div>
+                </div>
+              </div>
 
               <div class="row">
 
