@@ -1,11 +1,5 @@
 $(document).ready(function() {
 
-  // scroll massege page to bottom:
-  // $('#output-form').load(function(){
-  //   $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
-  // })
-  // $('.textarea-border').scrollTop(300)
-
  $('img').on('click', function(){
    var $parent = $(this).parent();
    var moda = $parent.find('.myModa');
@@ -27,20 +21,35 @@ $(document).ready(function() {
    $('.main-cont').css("min-height",window.innerHeight - 105)
  });
 
- // make page min-height the height of the window
- // $('.container.body').css("min-height",window.innerHeight - 30)
-
   // ajaxifying likes
-  // $('.fa.fa-heart-o').parent().on('click', function(event){
-  //   event.preventDefault();
-  //   console.log($(this).parent().attr('action'))
-  // });
-  //
-  // $('.fa.fa-heart').parent().on('click', function(event){
-  //   event.preventDefault();
-  //   console.log($(this).parent().attr('action') + "!!!")
-  // });
-  //
+  $('button').on('click','.fa-heart-o', function(event){
+    event.preventDefault();
+    $this = $(this).parent();
+    var link = $this.parent().attr('action');
+    $.ajax({
+      url: link,
+      type: "Post"
+    })
+    .done(function(response){
+      $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+      $this.closest('.row').find('.like-count').text(response);
+    });
+  });
+
+  $('button').on('click','.fa-heart', function(event){
+    event.preventDefault();
+    $this = $(this).parent();
+    var link = $this.parent().attr('action');
+    $.ajax({
+      url: link,
+      type: "Post"
+    })
+    .done(function(response){
+      $this.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+      $this.closest('.row').find('.like-count').text(response);
+    })
+  });
+
   // $('.fa.fa-star-o').parent().on('click', function(event){
   //   event.preventDefault();
   //   console.log($(this).parent().attr('action'))

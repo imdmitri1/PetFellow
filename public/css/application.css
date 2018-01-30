@@ -150,6 +150,7 @@ body {
 
 .jumbotron {
   padding: 0.5rem 2rem;
+  background-color: #f8f9fa;
   /* font-size: 2.2em; */
   text-align: center;
 }
