@@ -31,11 +31,11 @@
                 <div class="d-inline-block">
                   <% if liked?(comment) %>
                   <form action="/like/Comment/<%=comment.id%>" method="post">
-                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                    <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
                   </form>
                   <% else %>
                   <form action="/like/Comment/<%=comment.id%>" method="post">
-                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                    <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
                   </form>
                   <% end %>
                 </div>

@@ -22,9 +22,9 @@ $(document).ready(function() {
  });
 
   // ajaxifying likes
-  $('button').on('click','.fa-heart-o', function(event){
+  $('.col, .alike').on('click','button.fho', function(event){
     event.preventDefault();
-    $this = $(this).parent();
+    $this = $(this);
     var link = $this.parent().attr('action');
     $.ajax({
       url: link,
@@ -32,13 +32,14 @@ $(document).ready(function() {
     })
     .done(function(response){
       $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+      $this.removeClass('fho').addClass('fh');
       $this.closest('.row').find('.like-count').text(response);
     });
   });
 
-  $('button').on('click','.fa-heart', function(event){
+  $('.col, .alike').on('click','button.fh', function(event){
     event.preventDefault();
-    $this = $(this).parent();
+    $this = $(this);
     var link = $this.parent().attr('action');
     $.ajax({
       url: link,
@@ -46,6 +47,7 @@ $(document).ready(function() {
     })
     .done(function(response){
       $this.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+      $this.removeClass('fh').addClass('fho');
       $this.closest('.row').find('.like-count').text(response);
     })
   });

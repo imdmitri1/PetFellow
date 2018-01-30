@@ -40,11 +40,11 @@
             <div class="col d-flex justify-content-center">
               <% if liked?(fav.post) %>
               <form action="/like/Post/<%=fav.post.id%>" method="post">
-                <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
               </form>
               <% else %>
               <form action="/like/Post/<%=fav.post.id%>" method="post">
-                <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
               </form>
               <% end %>
             </div>
@@ -72,6 +72,10 @@
               <% if fav.post.comments.any? %>
                 <a href="/posts/<%=fav.post.id%>">
                   <span><i class="fa fa-comments" aria-hidden="true"></i></span>
+                </a>
+              <% else %>
+                <a href="/posts/<%=post.id%>">
+                  <span><i class="fa fa-comments-o" aria-hidden="true"></i></span>
                 </a>
               <% end %>
             </div>

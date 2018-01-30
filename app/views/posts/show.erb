@@ -32,17 +32,18 @@
 
           <div class="col d-flex justify-content-center">
             <% if @post.likes.total_count %>
-                <span class="like-count"><a class="btn btn-link align-items-start" href="/posts/<%=@post.id%>"><%= @post.likes.total_count %></a></span>            <% end %>
+                <span class="like-count d-flex align-items-center mx-auto"><%= @post.likes.total_count %></span>
+            <% end %>
           </div>
 
           <div class="col d-flex justify-content-center">
             <% if liked?(@post) %>
             <form action="/like/Post/<%=@post.id%>" method="post">
-              <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart" aria-hidden="true"></i></button>
+              <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
             </form>
             <% else %>
             <form action="/like/Post/<%=@post.id%>" method="post">
-              <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+              <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
             </form>
             <% end %>
           </div>
@@ -96,56 +97,58 @@
         <ul class="list-group">
           <% @post.comments.order("created_at").each do |comment| %>
           <li class="list-group-item">
+            <div class="row">
 
-            <div class="">
-              <span class="name">
-                <a href="/users/<%=comment.author_id%>">
-                  <%=comment.author.username%>:
-                </a>
-              </span>
+                <div class="col-12">
+                  <span class="name">
+                    <a href="/users/<%=comment.author_id%>">
+                      <%=comment.author.username%>:
+                    </a>
+                  </span>
 
-              <span class="description">
-                    <%=comment.content%>
-              </span>
-            </div>
+                  <span class="description">
+                        <%=comment.content%>
+                  </span>
+                </div>
 
-            <div class="">
+                <div class="col-12 alike">
 
-              <div class="d-inline-block">
-                <% if comment.likes.total_count %>
-                <span class="like-count"><%= comment.likes.total_count %></span>
-                <% end %>
-              </div>
-
-              <div class="d-inline-block">
-                <% if liked?(comment) %>
-                <form action="/like/Comment/<%=comment.id%>" method="post">
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                </form>
-                <% else %>
-                <form action="/like/Comment/<%=comment.id%>" method="post">
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </form>
-                <% end %>
-              </div>
-
-
-                <% if author?(comment.author_id)%>
-                  <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit" class="btn btn-link btn-sm">edit</a>
-                <% end %>
-                <% if author?(comment.author_id) || admin? %>
                   <div class="d-inline-block">
-                    <form action="/posts/<%=comment.post_id%>/comments/<%=comment.id%>" method="Post">
-                      <input type="hidden" name="_method" value="delete">
-                      <input type="submit" value="delete" class="btn btn-link btn-sm">
+                    <% if comment.likes.total_count %>
+                    <span class="like-count"><%= comment.likes.total_count %></span>
+                    <% end %>
+                  </div>
+
+                  <div class="d-inline-block">
+                    <% if liked?(comment) %>
+                    <form action="/like/Comment/<%=comment.id%>" method="post">
+                      <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
                     </form>
+                    <% else %>
+                    <form action="/like/Comment/<%=comment.id%>" method="post">
+                      <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                    </form>
+                    <% end %>
                   </div>
-                <% end %>
 
-                  <div class="date font-weight-light">posted on <%=Date.strptime("#{comment.created_at}")%>
-                  </div>
+
+                    <% if author?(comment.author_id)%>
+                      <a href="/posts/<%=@post.id%>/comments/<%=comment.id%>/edit" class="btn btn-link btn-sm">edit</a>
+                    <% end %>
+                    <% if author?(comment.author_id) || admin? %>
+                      <div class="d-inline-block">
+                        <form action="/posts/<%=comment.post_id%>/comments/<%=comment.id%>" method="Post">
+                          <input type="hidden" name="_method" value="delete">
+                          <input type="submit" value="delete" class="btn btn-link btn-sm">
+                        </form>
+                      </div>
+                    <% end %>
+
+                      <div class="col-12 date font-weight-light">posted on <%=Date.strptime("#{comment.created_at}")%>
+                      </div>
+                </div>
+
             </div>
-
 
           </li>
         <% end %>
