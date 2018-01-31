@@ -10,8 +10,8 @@ $(document).ready(function() {
    modaImg.attr('src', $(this).attr('src'));
    captionText.html($parent.parent().find('.info').html()).addClass('caption-color');
  })
- $('body').on('click','.close', function(){
-   $(this).parent().css("display", "none");
+ $('body').on('click','.moda', function(){
+   $(this).css("display", "none");
  })
 
   // add min body height:

@@ -59,7 +59,7 @@ delete '/posts/:id/comments/:comment_id' do
   comment_likes = Like.where("likable_type = ? and likable_id = ?", "Comment", params[:comment_id])
   if author?(@comment.author_id) || admin?
     @comment.destroy
-    comment_likes.destroy
+    comment_likes.map(&:destroy)
     redirect back if admin?
     redirect "/posts/#{params[:id]}"
   else

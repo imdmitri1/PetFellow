@@ -21,9 +21,7 @@ get '/' do
     else
       all_posts = sorted_posts[-sorted_posts.length..-1].reverse
     end
-    # all_posts = Post.popular
   end
   @posts = all_posts.paginate(:page => params[:page], :per_page => 32)
-
   erb :index
 end

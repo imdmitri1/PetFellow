@@ -59,8 +59,8 @@ delete '/posts/:id' do
   post_comments = Comment.where(post_id: params[:id])
   if author?(@post.author_id) || admin?
     @post.destroy
-    post_likes.destroy
-    post_comments.destroy
+    post_likes.map(&:destroy)
+    post_comments.map(&:destroy)
     redirect "/users/#{@post.author_id}" if admin?
     redirect "/users/#{current_user.id}"
   else
