@@ -19,6 +19,10 @@ $(document).ready(function() {
  $( window ).resize(function() {
    $('.main-cont').css("min-height",window.innerHeight - 105)
  });
+ $('.main-cont2').css("min-height",window.innerHeight)
+ $( window ).resize(function() {
+   $('.main-cont').css("min-height",window.innerHeight)
+ });
 
   // ajax
   if (docCookies.getItem("user")){
