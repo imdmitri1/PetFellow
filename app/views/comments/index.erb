@@ -38,20 +38,18 @@
                   <% end %>
                 </div>
 
-
-                  <% if author?(comment.author_id) || admin? %>
+                <% if author?(comment.author_id) || admin? %>
                   <div class="d-inline-block">
                     <form action="/posts/<%=comment.id%>/comments/<%=comment.id%>" method="Post">
                       <input type="hidden" name="_method" value="delete">
                       <input type="submit" value="delete" class="btn btn-link btn-sm">
                     </form>
                   </div>
-                  <% end %>
+                <% end %>
 
-                    <div class="date font-weight-light">posted on <%=Date.strptime("#{comment.created_at}")%>
-                    </div>
+                <div class="date font-weight-light">posted on <%=Date.strptime("#{comment.created_at}")%>
+                </div>
               </div>
-
 
             </li>
         <% end %>

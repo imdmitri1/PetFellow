@@ -25,15 +25,15 @@
 
             <div class="col d-flex justify-content-center">
               <% if favorited?(fav.post) %>
-              <form action="/favorite" method="Post">
-                <input type="hidden" name="post_id" value="<%=fav.post.id%>">
-                <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
-              </form>
+                <form action="/favorite" method="Post">
+                  <input type="hidden" name="post_id" value="<%=fav.post.id%>">
+                  <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+                </form>
               <% else %>
-              <form action="/favorite" method="Post">
-                <input type="hidden" name="post_id" value="<%=fav.post.id%>">
-                <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-              </form>
+                <form action="/favorite" method="Post">
+                  <input type="hidden" name="post_id" value="<%=fav.post.id%>">
+                  <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                </form>
               <% end %>
             </div>
 
@@ -43,13 +43,13 @@
 
             <div class="col d-flex justify-content-center">
               <% if liked?(fav.post) %>
-              <form action="/like/Post/<%=fav.post.id%>" method="post">
-                <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
-              </form>
+                <form action="/like/Post/<%=fav.post.id%>" method="post">
+                  <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                </form>
               <% else %>
-              <form action="/like/Post/<%=fav.post.id%>" method="post">
-                <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-              </form>
+                <form action="/like/Post/<%=fav.post.id%>" method="post">
+                  <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </form>
               <% end %>
             </div>
 
@@ -67,7 +67,7 @@
                   <% if fav.post.description && fav.post.description.length > 50 %>
                     <%=fav.post.description[0..50]%>...
                   <% else %>
-                  <%=fav.post.description%>
+                    <%=fav.post.description%>
                   <% end %>
               </a>
             </span>
@@ -85,11 +85,6 @@
             </div>
 
           </div>
-
-            <!-- <div class="row justify-content-between info"> -->
-              <!-- <div class="col-3 date align-items-center font-weight-light"> <%=Date.strptime("#{fav.post.created_at}")%>
-              </div> -->
-            <!-- </div> -->
 
       </div>
 

@@ -9,4 +9,5 @@ class Like < ActiveRecord::Base
     return "1 like" if total == 1
     return "#{total} likes" if total > 1
   end
+  
 end

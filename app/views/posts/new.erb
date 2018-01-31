@@ -13,15 +13,15 @@
         <!-- for saving links manually: -->
         <!-- <label for="pic_link">link</label>
         <input type="text" placeholder="link" name="pic_link" value="<%=@post.pic_link%>"> -->
-         <div class="form-group">
-          <label for="photo[image]">Choose file</label>
-          <input name="photo[image]" type="hidden" value="<%= @post.cached_image_data %>">
-          <input name="photo[image]" type="file"  class="form-control">
-        </div>
-         <div class="form-group">
-          <label for="photo[description]">Description</label>
-          <textarea name="photo[description]" class="form-control" rows="4"><%=@post.description%></textarea>
-        </div>
+          <div class="form-group">
+            <label for="photo[image]">Choose file</label>
+            <input name="photo[image]" type="hidden" value="<%= @post.cached_image_data %>">
+            <input name="photo[image]" type="file"  class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="photo[description]">Description</label>
+            <textarea name="photo[description]" class="form-control" rows="4"><%=@post.description%></textarea>
+          </div>
 
         <input type="submit" value="post" class="form-control btn btn-success">
       </form>

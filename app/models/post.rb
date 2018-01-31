@@ -10,18 +10,9 @@ class Post < ActiveRecord::Base
   validates :image_data, presence: true, unless: -> (post){post.pic_link.present?}
   validates :description, length: { maximum: 512 }
 
-  # need to fix it
-  # scope :popular, lambda {
-  #   select("post.id,post.description,post.pic_link, count(likes.id) AS likes_count").
-  #   joins(:likes).
-  #   group("posts.id").
-  #   order("likes_count DESC")
-  # }
-
   def like_count
     self.likes.count
   end
-
 
   def self.search(word)
     found = Post.all.order('created_at': :desc).select do |post|

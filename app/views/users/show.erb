@@ -10,12 +10,9 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <!-- <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
     <div class="row">
 
       <div class="col-sm-6 col-md-4">
-        <!-- <img src="< %= @user.avatar%>" alt="<%= @user.avatar%>" class="img-fluid img-thumbnail avatar mx-auto d-block"> -->
         <% if @user.image_url %>
           <img src="<%=@user.image_url%> " alt="<%=@user.image_url%>" class="img-fluid img-thumbnail avatar mx-auto d-block">
         <% else %>
@@ -26,9 +23,7 @@
       <div class="col-sm-6 col-md-4">
         <div class="">Name: <%= @user.name%> </div>
         <div class="">Username: <%= @user.username%> </div>
-        <!-- <div class=""><%= @user.email%> </div> -->
         <div class="">Bio: <%= @user.bio%> </div>
-
       </div>
 
       <div class="col-sm-6 col-md-4 mx-auto align-items-center">
@@ -53,20 +48,20 @@
           </div>
 
           <% if !(your_page?) %>
-          <div class="">
-            <a href="/messages/<%= @user.id %>" class="btn btn-outline-dark btn-sm">message</a>
-          </div>
+              <div class="">
+                <a href="/messages/<%= @user.id %>" class="btn btn-outline-dark btn-sm">message</a>
+              </div>
 
-          <% if following? %>
-          <form action="/users/<%=@user.id%>/unfollow" method="Post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="unfollow" class="btn btn-outline-dark btn-sm">
-          </form>
-          <% else %>
-          <form action="/users/<%=@user.id%>/follow" method="Post">
-            <input type="submit" value="follow" class="btn btn-outline-dark btn-sm">
-          </form>
-          <% end %>
+              <% if following? %>
+                <form action="/users/<%=@user.id%>/unfollow" method="Post">
+                  <input type="hidden" name="_method" value="delete">
+                  <input type="submit" value="unfollow" class="btn btn-outline-dark btn-sm">
+                </form>
+              <% else %>
+                <form action="/users/<%=@user.id%>/follow" method="Post">
+                  <input type="submit" value="follow" class="btn btn-outline-dark btn-sm">
+                </form>
+              <% end %>
           <% end %>
         </div>
       </div>
@@ -74,12 +69,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 <div class="row">
   <% @user.posts.order(:created_at).each do |post| %>
@@ -104,15 +93,15 @@
 
             <div class="col d-flex justify-content-center  px-0">
               <% if favorited?(post) %>
-              <form action="/favorite" method="Post">
-                <input type="hidden" name="post_id" value="<%=post.id%>">
-                <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
-              </form>
+                <form action="/favorite" method="Post">
+                  <input type="hidden" name="post_id" value="<%=post.id%>">
+                  <button type="submit" class="btn btn-outline-success fs"><i class="fa fa-star" aria-hidden="true"></i></i></button>
+                </form>
               <% else %>
-              <form action="/favorite" method="Post">
-                <input type="hidden" name="post_id" value="<%=post.id%>">
-                <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-              </form>
+                <form action="/favorite" method="Post">
+                  <input type="hidden" name="post_id" value="<%=post.id%>">
+                  <button type="submit" class="btn btn-outline-success fso"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                </form>
               <% end %>
             </div>
 
@@ -122,13 +111,13 @@
 
             <div class="col d-flex justify-content-center  px-0">
               <% if liked?(post) %>
-              <form action="/like/Post/<%=post.id%>" method="post">
-                <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
-              </form>
+                <form action="/like/Post/<%=post.id%>" method="post">
+                  <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                </form>
               <% else %>
-              <form action="/like/Post/<%=post.id%>" method="post">
-                <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-              </form>
+                <form action="/like/Post/<%=post.id%>" method="post">
+                  <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </form>
               <% end %>
             </div>
 
@@ -146,7 +135,7 @@
                   <% if post.description && post.description.length > 50 %>
                     <%=post.description[0..50]%>...
                   <% else %>
-                  <%=post.description%>
+                    <%=post.description%>
                   <% end %>
               </a>
             </span>
@@ -164,11 +153,6 @@
             </div>
 
           </div>
-
-            <!-- <div class="row justify-content-between info"> -->
-              <!-- <div class="col-3 date align-items-center font-weight-light"> <%=Date.strptime("#{post.created_at}")%>
-              </div> -->
-            <!-- </div> -->
 
       </div>
 

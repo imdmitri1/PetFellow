@@ -2,16 +2,17 @@
 
   <div class="row">
     <% if @user_results %>
-          <% @user_results.each do |user| %>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-              <div class="card border-info mb-3">
 
-                <a href="/users/<%=user.id%>"><img src="<%= user.avatar %>" alt="<%= user.avatar %>" class="img-fluid img-main mx-auto d-block">   </a>
-                <a href="/users/<%=user.id%>">Username: <%= user.username %>  </a>
+      <% @user_results.each do |user| %>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card border-info mb-3">
 
-              </div>
-            </div>
-          <% end %>
+            <a href="/users/<%=user.id%>"><img src="<%= user.avatar %>" alt="<%= user.avatar %>" class="img-fluid img-main mx-auto d-block">   </a>
+            <a href="/users/<%=user.id%>">Username: <%= user.username %>  </a>
+
+          </div>
+        </div>
+      <% end %>
 
       <nav aria-label="Search results pages">
         <div class="pagination justify-content-center font-weight-normal">
@@ -51,8 +52,6 @@
 
               <div class="row">
 
-                <!-- <div class="col"></div> -->
-
                 <div class="col d-flex justify-content-center  px-0">
                   <% if favorited?(post) %>
                   <form action="/favorite" method="Post">
@@ -82,8 +81,6 @@
                   </form>
                   <% end %>
                 </div>
-
-                <!-- <div class="col"></div> -->
 
               </div>
 
@@ -117,11 +114,6 @@
                 </div>
 
               </div>
-
-                <!-- <div class="row justify-content-between info"> -->
-                  <!-- <div class="col-3 date align-items-center font-weight-light"> <%=Date.strptime("#{post.created_at}")%>
-                  </div> -->
-                <!-- </div> -->
 
           </div>
 

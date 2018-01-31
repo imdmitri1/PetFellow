@@ -4,6 +4,7 @@
   <div class="col-sm-12 col-md-6 col-lg-6 ">
     <h3>Please log in</h3>
     <h6 class="guest">For quick functionality look use email: <div>guest@mail.com</div> and password: <div>123456</div></h6>
+
     <%= erb :'partials/_errors', layout: false, locals: {errors: @errors}%>
 
     <form action="/sessions" method="Post">

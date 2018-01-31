@@ -6,7 +6,6 @@
 
     <div class="card border-info mb-3">
 
-
         <% if @post.pic_link %>
           <img src="<%=@post.pic_link%> " alt="<%=@post.pic_link%>" class="img-fluid">
         <% else %>
@@ -14,7 +13,6 @@
         <% end %>
 
         <div class="row">
-
 
           <div class="col d-flex justify-content-center">
             <% if favorited?(@post) %>
@@ -36,13 +34,13 @@
 
           <div class="col d-flex justify-content-center">
             <% if liked?(@post) %>
-            <form action="/like/Post/<%=@post.id%>" method="post">
-              <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
-            </form>
+              <form action="/like/Post/<%=@post.id%>" method="post">
+                <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
+              </form>
             <% else %>
-            <form action="/like/Post/<%=@post.id%>" method="post">
-              <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-            </form>
+              <form action="/like/Post/<%=@post.id%>" method="post">
+                <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+              </form>
             <% end %>
           </div>
 
@@ -85,8 +83,6 @@
   <div class="col-sm-12 col-md-2 col-lg-2"></div>
 </div>
 
-<!--  -->
-
 <div class="row">
   <div class="col-sm-12 col-md-2 col-lg-2"></div>
   <div class="col-sm-12 col-md-8 col-lg-8">
@@ -117,13 +113,13 @@
 
                   <div class="d-inline-block">
                     <% if liked?(comment) %>
-                    <form action="/like/Comment/<%=comment.id%>" method="post">
-                      <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                    </form>
+                      <form action="/like/Comment/<%=comment.id%>" method="post">
+                        <button type="submit" class="btn btn-outline-success fh"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                      </form>
                     <% else %>
-                    <form action="/like/Comment/<%=comment.id%>" method="post">
-                      <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                    </form>
+                      <form action="/like/Comment/<%=comment.id%>" method="post">
+                        <button type="submit" class="btn btn-outline-success fho"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                      </form>
                     <% end %>
                   </div>
 
