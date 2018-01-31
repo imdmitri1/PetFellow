@@ -1,13 +1,13 @@
 require 'faker'
-#
-# # User.delete_all
-# # Post.delete_all
-# # FavoritePost.delete_all
-# # Comment.delete_all
-# # Like.delete_all
-# # Message.delete_all
-# # Follow.delete_all
-#
+
+# User.delete_all
+# Post.delete_all
+# FavoritePost.delete_all
+# Comment.delete_all
+# Like.delete_all
+# Message.delete_all
+# Follow.delete_all
+
 # pet_collection = [
 #           "https://images.unsplash.com/photo-1456081445129-830eb8d4bfc6?auto=format&fit=crop&w=1358&q=80",
 #           "https://images.unsplash.com/photo-1467184576221-d5d206ab2707?auto=format&fit=crop&w=1350&q=80",
@@ -61,24 +61,18 @@ require 'faker'
 #           "https://images.unsplash.com/photo-1507320901381-ffe8b30f8e8a?auto=format&fit=crop&w=1352&q=80",
 #           "https://images.unsplash.com/photo-1452563788656-37c252ce6850?auto=format&fit=crop&w=934&q=80",
 #           "https://images.unsplash.com/photo-1452721226468-f95fb66ebf83?auto=format&fit=crop&w=1100&q=80",
-#           "https://images.unsplash.com/photo-1447768005573-3b54cdf058a2?auto=format&fit=crop&w=582&q=80",
-#           "https://images.unsplash.com/photo-1447969025943-8219c41ea47a?auto=format&fit=crop&w=1350&q=80",
-#           "https://images.unsplash.com/photo-1448698314110-8c1b903e0717?auto=format&fit=crop&w=1013&q=80",
-#           "https://images.unsplash.com/photo-1421098518790-5a14be02b243?auto=format&fit=crop&w=1489&q=80",
-#           "https://images.unsplash.com/photo-1501538383113-ff3d1c43ed54?auto=format&fit=crop&w=1350&q=80",
-#           "https://images.unsplash.com/photo-1489924034176-2e678c29d4c6?auto=format&fit=crop&w=1351&q=80"
+#           "https://images.unsplash.com/photo-1447768005573-3b54cdf058a2?auto=format&fit=crop&w=582&q=80"
 #         ]
 #
 # User.create!(name: "Tom", username: "tomtom", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "tom@mail.com", password: "password", admin: ENV['ADMIN'])
-User.create!(name: "Guest", username: "guest", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "guest@mail.com", password: "123456")
 #
 # 10.times do |n|
 #   namee = Faker::Internet.user_name
 #   User.create!(name: namee, username: namee + rand(10..100).to_s, email: Faker::Internet.safe_email(namee), bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: [Faker::Avatar.image,"https://api.adorable.io/avatars/" + (n+100).to_s].sample, password: "password")
 # end
 #
-# 
-# 57.times do |n|
+#
+# 52.times do |n|
 #   Post.create!(description: Faker::BackToTheFuture.quote, pic_link: pet_collection[n], author_id: rand(1..11))
 #   # sleep(1)
 # end
@@ -91,11 +85,11 @@ User.create!(name: "Guest", username: "guest", bio: Faker::HitchhikersGuideToThe
 #   Comment.create!(content: Faker::Hacker.say_something_smart, post_id: rand(1..57), author_id: rand(1..11))
 # end
 #
-# 300.times do
+# 400.times do
 #   Like.create!(count: 1, likable_type: "Post", likable_id: rand(1..57), author_id: rand(1..10))
 # end
 #
-# 100.times do
+# 150.times do
 #   Like.create!(count: 1, likable_type: "Comment", likable_id: rand(1..100), author_id: rand(1..10))
 # end
 #
@@ -104,9 +98,61 @@ User.create!(name: "Guest", username: "guest", bio: Faker::HitchhikersGuideToThe
 #   Message.create!(content: ["Hey, ", "Hi, ", "", ""].sample + Faker::Hacker.say_something_smart, author_id: rand(1..10), receiver_id: rand(1..10))
 # end
 #
-# 20.times do
+# 30.times do
 #   rand1 = rand(1..11)
 #   rand2 = rand(1..11)
 #   Follow.create!(user_id: rand1, follower_id: rand2)
 #   Follow.create!(user_id: rand2, following_id: rand1)
 # end
+
+pet_coll2 = [
+            "https://images.unsplash.com/photo-1447969025943-8219c41ea47a?auto=format&fit=crop&w=1350&q=80",
+            "https://images.unsplash.com/photo-1448698314110-8c1b903e0717?auto=format&fit=crop&w=1013&q=80",
+            "https://images.unsplash.com/photo-1421098518790-5a14be02b243?auto=format&fit=crop&w=1489&q=80",
+            "https://images.unsplash.com/photo-1501538383113-ff3d1c43ed54?auto=format&fit=crop&w=1350&q=80",
+            "https://images.unsplash.com/photo-1489924034176-2e678c29d4c6?auto=format&fit=crop&w=1351&q=80"
+]
+
+g = User.find_by(username: "guest")
+g.delete if g
+
+User.create!(name: "Guest", username: "guest", bio: Faker::HitchhikersGuideToTheGalaxy.quote, avatar: Faker::Avatar.image, email: "guest@mail.com", password: "123456")
+
+user = User.find_by(email: "guest@mail.com")
+
+5.times do |n|
+  Post.create!(description: Faker::BackToTheFuture.quote, pic_link: pet_coll2[n], author_id: user.id)
+end
+
+8.times do
+  FavoritePost.create!(post_id: rand(1..57), user_id: user.id)
+end
+
+10.times do
+  Comment.create!(content: Faker::Hacker.say_something_smart, post_id: rand(1..57), author_id: user.id)
+end
+
+15.times do
+  Like.create!(count: 1, likable_type: "Post", likable_id: rand(1..57), author_id: user.id)
+end
+
+10.times do
+  Like.create!(count: 1, likable_type: "Comment", likable_id: rand(1..100), author_id: user.id)
+end
+
+
+4.times do
+  Message.create!(content: ["Hey, ", "Hi, ", "", ""].sample + Faker::Hacker.say_something_smart, author_id: user.id, receiver_id: rand(3..10))
+end
+
+2.times do
+  rand1 = rand(3..12)
+  Follow.create!(user_id: rand1, follower_id: user.id)
+  Follow.create!(user_id: user.id, following_id: rand1)
+end
+
+5.times do
+  rand1 = rand(3..12)
+  Follow.create!(user_id: user.id, follower_id: rand1)
+  Follow.create!(user_id: rand1, following_id: user.id)
+end
