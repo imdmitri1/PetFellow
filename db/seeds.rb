@@ -125,15 +125,15 @@ user = User.find_by(email: "guest@mail.com")
 end
 
 8.times do
-  FavoritePost.create!(post_id: rand(1..57), user_id: user.id)
+  FavoritePost.create!(post_id: rand(1..51), user_id: user.id)
 end
 
 10.times do
-  Comment.create!(content: Faker::Hacker.say_something_smart, post_id: rand(1..57), author_id: user.id)
+  Comment.create!(content: Faker::Hacker.say_something_smart, post_id: rand(1..51), author_id: user.id)
 end
 
 15.times do
-  Like.create!(count: 1, likable_type: "Post", likable_id: rand(1..57), author_id: user.id)
+  Like.create!(count: 1, likable_type: "Post", likable_id: rand(1..51), author_id: user.id)
 end
 
 10.times do
@@ -146,13 +146,13 @@ end
 end
 
 2.times do
-  rand1 = rand(3..12)
+  rand1 = rand(3..10)
   Follow.create!(user_id: rand1, follower_id: user.id)
   Follow.create!(user_id: user.id, following_id: rand1)
 end
 
 5.times do
-  rand1 = rand(3..12)
+  rand1 = rand(3..10)
   Follow.create!(user_id: user.id, follower_id: rand1)
   Follow.create!(user_id: rand1, following_id: user.id)
 end
