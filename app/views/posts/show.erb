@@ -31,9 +31,7 @@
           </div>
 
           <div class="col d-flex justify-content-center">
-            <% if @post.likes.total_count %>
                 <span class="like-count d-flex align-items-center mx-auto"><%= @post.likes.total_count %></span>
-            <% end %>
           </div>
 
           <div class="col d-flex justify-content-center">
@@ -114,9 +112,7 @@
                 <div class="col-12 alike">
 
                   <div class="d-inline-block">
-                    <!-- <% if comment.likes.total_count %> -->
                       <span class="like-count"><%= comment.likes.total_count %></span>
-                    <!-- <% end %> -->
                   </div>
 
                   <div class="d-inline-block">
