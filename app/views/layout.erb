@@ -21,6 +21,7 @@
   <meta property="og:url" content="https://petfellow.herokuapp.com/" />
   <meta property="og:description" content="PetFellow - social network for pet lovers!" />
   <meta property="og:site_name" content="PetFellow" />
+  <script src="/js/cookies_min.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113297884-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -74,14 +75,13 @@
                   </div>
                 </li>
                  <script>
-                   // var expDate = new Date();
-                   // expDate.setDate(expDate.getDate() + 1);
-                   // document.cookie = "user=logged_in; expires=" + expDate;
-                   document.cookie = "user=logged_in";
+                   var expDate = new Date();
+                   expDate.setDate(expDate.getDate() + 1);
+                   docCookies.setItem("user", "logged_in!", expDate);
                  </script>
               <% else %>
                 <script>
-                  document.cookie ="user=; expires=Thu, 01 Jan 2000 00:00:00 UTC; path=/;";
+                  docCookies.removeItem("user")
                 </script>
 
                 <li  class="nav-item d-flex justify-content-end"><a href="/sessions/new" class="nav-link pading-right">Login</a> <a href="/users/new" class="nav-link">Sign Up</a></li>

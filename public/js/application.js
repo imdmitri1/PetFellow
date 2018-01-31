@@ -21,7 +21,7 @@ $(document).ready(function() {
  });
 
   // ajax
-  if (document.cookie){
+  if (docCookies.getItem("user")){
       // ajaxifying likes
     $('.col, .alike').on('click','button.fho', function(event){
       event.preventDefault();
