@@ -7,7 +7,7 @@ end
 
 get '/users/new' do
   @user = User.new
-  erb :'users/new' #, layout: :authentication_layout
+  erb :'users/new'
 end
 
 post '/users' do
@@ -20,7 +20,7 @@ post '/users' do
   else
     status 422
     @errors = @user.errors.full_messages
-    erb :'users/new' #, layout: :authentication_layout
+    erb :'users/new'
   end
 end
 
@@ -57,18 +57,33 @@ delete '/users/:id' do
   user = User.find_by(id: params[:id])
   if author?(user.id) || admin?
     posts = Post.where(author_id: user.id)
-    favorite_posts = FavoritePost.where(user_id: user.id)
+    # delete comments on user posts
+    posts.map { |post| post.comments.map(&:destroy) }
+    # delete likes on user posts
+    posts.map { |post| post.likes.map(&:destroy) }
+    # delete favors on user posts
+    posts.map { |post| post.favorite_posts.map(&:destroy) }
+
     user_comments = Comment.where(author_id: user.id)
-    # comments_on_user_posts = Comment.where()
-    user_likes = Like.where(author_id: user.id)
-    # likes_on_user_posts = Like.where()
-    # likes_on_user_comments = Like.where()
+    # delete likes on user comments
+    user_comments.map { |comment| comment.likes.map(&:destroy) }
+
+    # getting all follow records
     follows = Follow.where(user_id: user.id)
-    # followings = Follows.where()
-    # followers = Follows.where()
-    # messages??
+    follows2 = Follow.where(follower_id: user.id)
+    follows3 = Follow.where(following_id: user.id)
+
+    # getting all messages
+    messages = Message.where(author_id: params[:id])
+    messages2 = Message.where(receiver_id: params[:id])
+
+    user_likes = Like.where(author_id: user.id)
+    favorite_posts = FavoritePost.where(user_id: user.id)
+
+    # delete everything else
+    [posts,favorite_posts,user_comments,user_likes,messages,messages2,follows,follows2,follows3].map { |item| item.map(&:destroy) if item }
     user.destroy
-    [posts,favorite_posts,user_comments,user_likes,follows].each { |item| item.map(&:destroy) if item }
+
     redirect '/'
   else
     redirect "/users/#{@user.id}"

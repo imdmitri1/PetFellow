@@ -2,6 +2,8 @@ get '/comments' do
   if admin?
     @all_comments = Comment.all.order(created_at: :desc)
     erb :'comments/index'
+  else
+    redirect "/"
   end
 end
 
@@ -54,10 +56,11 @@ end
 
 delete '/posts/:id/comments/:comment_id' do
   @comment = Comment.find_by(id: params[:comment_id])
+  comment_likes = Like.where("likable_type = ? and likable_id = ?", "Comment", params[:comment_id])
   if author?(@comment.author_id) || admin?
     @comment.destroy
+    comment_likes.destroy
     redirect back if admin?
-    # delete likes???
     redirect "/posts/#{params[:id]}"
   else
     @errors = ["It's not your comment!"]
