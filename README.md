@@ -3,7 +3,9 @@
 ## Social network for pet lovers!
 ##### Screen shot:
 
-![screenshot](public/version-01-23.png)
+![screenshot](public/version-02-01.png)
+
+This web app built with [Sinatra](http://sinatrarb.com/) and using AWS S3 for storage
 
 ##### User stories:
 >  * user can see a homepage with recent and 50 most liked posts
@@ -31,3 +33,5 @@ Stretch: adding tags, word checking, picture checking, tests
 4.  `bundle exec rake db:seed`
 5.  `bundle exec shotgun config.ru`
 6.  Open [http://localhost:9393](http://localhost:9393)
+
+P.S. You would need AWS S3 keys and set admin environment variable to get full functionality!
