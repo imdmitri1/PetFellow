@@ -58,6 +58,7 @@ delete '/posts/:id' do
   post_likes = Like.where("likable_type = ? and likable_id = ?", "Post", params[:id])
   post_comments = Comment.where(post_id: params[:id])
   if author?(@post.author_id) || admin?
+    @post.favorite_posts.map(&:destroy)
     @post.destroy
     post_likes.map(&:destroy)
     post_comments.map(&:destroy)
